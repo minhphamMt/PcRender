@@ -1,0 +1,186 @@
+.container-fuild {
+    .header {
+        display: flex;
+        width: 100vw;
+        height: 80px;
+        border-bottom: 1px solid gray;
+        .left-content {
+            width: 30%;
+            height: inherit;
+            .logo {
+                margin-left: 50px;
+                width: 20%;
+                height: inherit;
+                background-image: url("./srcimg/logo.png");
+                background-size: contain;
+                background-repeat: no-repeat;
+                background-position: center;
+                scale: 1.4;
+            }
+        }
+        .right-content {
+            width: 70%;
+            height: inherit;
+            margin-left: 0px;
+            .avatar {
+                position: absolute;
+                right: 30px;
+                width: 50px;
+                height: 50px;
+                background-image: url("./srcimg/profile.png");
+                background-repeat: no-repeat;
+                background-size: contain;
+                background-position: center;
+                margin-top: 15px;
+                z-index: 2;
+            }
+            .bell {
+                position: absolute;
+                width: 35px;
+                height: 35px;
+                background-image: url("./srcimg/bell\ \(2\).png");
+                background-repeat: no-repeat;
+                background-size: contain;
+                background-position: center;
+                margin-top: 22px;
+                z-index: 2;
+                right: 85px;
+            }
+            .coin-item {
+                position: absolute;
+                right: 150px;
+                top: 15px;
+                width: 20px;
+                height: 20px;
+                background-image: url("./srcimg/coin.png");
+                background-repeat: no-repeat;
+                background-size: contain;
+                background-position: center;
+                margin-top: 15px;
+                margin-left: -50px;
+            }
+            .respon {
+                position: absolute;
+            }
+            .nav {
+                height: inherit;
+                align-items: center;
+                justify-content: center;
+                margin-right: 20px;
+                .nav-item {
+                    min-width: 110px;
+                    height: 98%;
+                    cursor: pointer;
+
+                    &:hover {
+                        background-color: rgba(128, 128, 128, 0.262);
+                    }
+
+                    .nav-link {
+                        color: black;
+                        margin-top: 18px;
+                    }
+                }
+                .active {
+                    .nav-link {
+                        color: blue;
+                    }
+                }
+                .coin {
+                    color: rgba(74, 150, 243, 0.9);
+                }
+            }
+        }
+    }
+}
+.hhhhh {
+    position: fixed;
+    z-index: 1000000;
+    background-color: white;
+    top: 0;
+    left: 0;
+}
+@media screen and (max-width: 1300px) {
+    .header {
+        .left-content {
+            .logo {
+                position: absolute;
+                left: 500;
+                scale: 0.8;
+            }
+        }
+        .right-content {
+            .respon {
+                width: 50px;
+                height: 50px;
+                background-image: url("./srcimg/list.png");
+                background-size: contain;
+                background-repeat: no-repeat;
+                position: absolute;
+                right: 10px;
+                top: 15px;
+            }
+            .avatar {
+                position: absolute;
+                margin-right: 115px;
+            }
+            .bell {
+                margin-right: 0px;
+            }
+        }
+        .nav {
+            position: absolute;
+            right: 0;
+            max-width: 340px;
+            min-height: 460px;
+            margin-top: 78px;
+            background-color: #ffff;
+            box-shadow: 2px 3px 5px 5px rgba(0, 0, 0, 0.205);
+            z-index: 3;
+            align-items: none !important;
+            margin-right: 0px !important;
+            .nav-item {
+                display: inline;
+                min-height: 80px;
+                max-height: 80px;
+                width: 100%;
+                .nav-link {
+                    margin: 0 !important;
+                    width: 100%;
+                    height: inherit;
+                    font-size: 20px;
+                }
+            }
+            .it {
+                width: 100%;
+                display: inline;
+            }
+            .coin-item {
+                display: none;
+            }
+        }
+    }
+}
+@media screen and (max-width: 321px) {
+    .left-content {
+        .logo {
+            position: absolute;
+            left: -15px !important;
+            scale: 1.5 !important;
+        }
+    }
+    .nav-345 {
+        position: absolute;
+        scale: 0.8;
+
+        top: -45px;
+        right: -50px !important;
+    }
+}
+@media screen and (min-width: 1000px) and (max-width: 1300px) {
+    .logo {
+        position: absolute;
+        scale: 0.8 !important;
+        left: -20px;
+    }
+}

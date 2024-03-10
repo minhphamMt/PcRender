@@ -1,0 +1,120 @@
+.container {
+    .page {
+        width: 25px;
+        height: 25px;
+        border: 1px solid gray;
+        text-align: center;
+        padding-bottom: 2px;
+        margin-top: 8px !important;
+        margin: 0 10px;
+    }
+    .child {
+        display: flex;
+        width: 100%;
+        height: 100%;
+        gap: 30px;
+        margin-top: 20px;
+        .item {
+            position: relative;
+            border-radius: 15px;
+            min-width: 300px;
+            max-width: 350px;
+            height: 450px;
+            border: 1px solid gray !important;
+            box-shadow: 0px 0px 6px 0px #8080809c;
+            text-align: start;
+            padding: 5px 5px;
+            cursor: pointer;
+            .tag {
+                position: absolute;
+                left: 8px;
+                bottom: 5px;
+                width: 100%;
+                height: 30px;
+                background-image: url("../../srcimg/Screenshot\ 2024-03-09\ 023449.png");
+                background-size: contain;
+                background-repeat: no-repeat;
+            }
+            &.active {
+                border: 1px solid #64b5f6 !important;
+                .header {
+                    position: absolute;
+                    width: 100%;
+                    height: 20px;
+                    background-color: #64b5f6;
+                    border-radius: 14px 14px 0px 0px !important;
+                    top: 0;
+                    left: 0;
+                    .img {
+                        width: 100px;
+                        height: inherit;
+                        background-image: url("../../srcimg/logo-trang.png");
+                        background-size: contain;
+                        background-repeat: no-repeat;
+                        background-position: center;
+                        margin: 0 auto;
+                    }
+                }
+            }
+            p {
+                color: rgb(29, 120, 247);
+            }
+            ul {
+                padding-left: 20px;
+            }
+        }
+    }
+}
+// @media screen and (max-width: 768px) {
+//     .child {
+//         display: flex;
+//         flex-direction: column;
+//         align-items: center;
+//         justify-content: center;
+//         flex-wrap: wrap !important;
+//         height: 100vh;
+//         .item {
+//             max-width: 355px !important;
+//         }
+//     }
+// }
+@media screen and (min-width: 350px) and (max-width: 480px) {
+    .child {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        justify-content: center;
+        flex-wrap: wrap !important;
+        height: 100vh;
+        .item {
+            min-width: 350px !important;
+        }
+    }
+}
+@media screen and (max-width: 321px) {
+    .child {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        justify-content: center;
+        flex-wrap: wrap !important;
+        height: 100vh;
+        .item {
+            min-width: 296px !important;
+        }
+    }
+}
+@media screen and (min-width: 767px) and (max-width: 1300px) {
+    .child {
+        display: flex;
+        flex-wrap: wrap;
+        align-items: center;
+        justify-content: space-between;
+        height: 100vh;
+    }
+    .item {
+        flex: 0 0 calc(50% - 20px); /* flex-basis: 50% - 20px */
+        margin: 10px; /* Đảm bảo margin giữa các phần tử */
+        max-width: 300px !important; /* Đảm bảo rằng các phần tử không vượt quá 300px */
+    }
+}

@@ -1,0 +1,78 @@
+.btn {
+    width: 150px;
+    position: relative;
+    z-index: 2;
+    opacity: 0.9;
+    border-radius: 10px;
+    background-color: #3399fe;
+    color: black;
+    // border: 1px solid black;
+}
+.title-ban {
+    text-transform: capitalize;
+}
+.container {
+    background-color: white;
+    .container-fluid {
+        display: flex;
+        align-items: center;
+        justify-content: space-between; // Căn giữa các phần tử và đều nhau
+        background-color: #ffff;
+        box-shadow: 0px 1px 6px 0px rgba(0, 0, 0, 0.152);
+        border-radius: 10px;
+        text-transform: capitalize;
+        padding: 0 !important;
+        ul {
+            display: flex;
+            width: 100%; // Chiếm toàn bộ không gian của container-fluid
+            padding: 0; // Loại bỏ padding mặc định của ul
+
+            .nav-item {
+                flex: 1; // Phần tử chia đều không gian
+                min-width: 254px;
+                border: 10px;
+                &:hover {
+                    background-color: rgba(159, 158, 158, 0.56);
+                }
+                .nav-link {
+                    color: black;
+                    border: 10px;
+                    &.active {
+                        background-color: rgba(156, 155, 155, 0.762);
+                        color: white;
+                    }
+                }
+            }
+        }
+    }
+}
+
+@media screen and (max-width: 768px) {
+    .container-fluid {
+        padding: 0 !important;
+        ul {
+            display: flex;
+            flex-wrap: wrap;
+            .nav-item {
+                min-width: 178px !important;
+                width: 50%; // Chia 2 cột
+                &:nth-child(2n) {
+                    margin-right: 0; // Không có margin-right cho phần tử thứ 2, 4, 6, ...
+                }
+                &:nth-child(n + 3) {
+                    margin-top: 5px; // Khoảng cách giữa các hàng
+                }
+                &:last-child {
+                    flex-grow: 1;
+                    width: 100%;
+                }
+                .nav-link {
+                    &:hover {
+                        background-color: rgba(159, 158, 158, 0.56);
+                        border: 10px !important;
+                    }
+                }
+            }
+        }
+    }
+}
