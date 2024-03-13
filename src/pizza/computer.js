@@ -1,6 +1,12 @@
 import React, { Component } from "react";
 import "./banner.scss";
-import { BrowserRouter as Router, Route, Switch } from "react-router-dom";
+import { withRouter } from "react-router-dom"; // Thêm withRouter
+import {
+  BrowserRouter as Router,
+  Route,
+  Switch,
+  Redirect,
+} from "react-router-dom";
 import RouterPc from "./Router/RouterPc";
 import GiaLap from "./CreateComputer/js/gialap";
 import Gamming from "./CreateComputer/js/gamming";
@@ -18,6 +24,7 @@ class Computer extends Component {
       arrChorme: [],
       arrRenderAi: [],
       arrGiaLap01: [],
+      //--------------
       active: [],
       mesAi: [],
       mesGame: [],
@@ -57,78 +64,22 @@ class Computer extends Component {
       arrGiaLap01: arrcoppy,
     });
   };
-
   handleClick = () => {
     let active = this.state.active;
     let mesAi = this.state.mesAi;
     let mesGame = this.state.mesGame;
     let meschorme = this.state.meschorme;
     let mesgl = this.state.mesgl;
-    for (let i = 0; i < active.length; i++) {
-      if (active[i] === "full") {
-        toast.warn("Pc đã full vui lòng chọn Pc khác !", {
-          position: "top-center",
-          autoClose: 3000,
-          hideProgressBar: false,
-          closeOnClick: true,
-          pauseOnHover: false,
-          draggable: true,
-          progress: undefined,
-          theme: "colored",
-        });
-        break;
-      }
-    }
-    for (let i = 0; i < mesAi.length; i++) {
-      if (mesAi[i] === "full") {
-        toast.warn("Pc đã full vui lòng chọn Pc khác !", {
-          position: "top-center",
-          autoClose: 3000,
-          hideProgressBar: false,
-          closeOnClick: true,
-          pauseOnHover: false,
-          draggable: true,
-          progress: undefined,
-          theme: "colored",
-        });
-        break;
-      }
-    }
-    for (let i = 0; i < mesGame.length; i++) {
-      if (mesGame[i] === "full") {
-        toast.warn("Pc đã full vui lòng chọn Pc khác !", {
-          position: "top-center",
-          autoClose: 3000,
-          hideProgressBar: false,
-          closeOnClick: true,
-          pauseOnHover: false,
-          draggable: true,
-          progress: undefined,
-          theme: "colored",
-        });
-        break;
-      }
-    }
-    for (let i = 0; i < meschorme.length; i++) {
-      if (meschorme[i] === "full") {
-        toast.warn("Pc đã full vui lòng chọn Pc khác !", {
-          position: "top-center",
-          autoClose: 3000,
-          hideProgressBar: false,
-          closeOnClick: true,
-          pauseOnHover: false,
-          draggable: true,
-          progress: undefined,
-          theme: "colored",
-        });
-        break;
-      }
-    }
-    for (let i = 0; i < mesgl.length; i++) {
-      if (mesgl[i] === "full") {
-        toast.warn(
-          <p style={{ color: "black" }}>Pc đã full vui lòng chọn Pc khác !</p>,
-          {
+    let { arr, arrGame, arrChorme, arrRenderAi, arrGiaLap01 } = this.state;
+    const arraysToCheck = [active, mesAi, mesGame, meschorme, mesgl];
+    for (let j = 0; j < arraysToCheck.length; j++) {
+      const currentArray = arraysToCheck[j];
+      const filteredArr = currentArray.filter(
+        (item) => item !== undefined && item !== false
+      );
+      for (let i = 0; i < currentArray.length; i++) {
+        if (currentArray[i] === "full") {
+          toast.warn("Pc đã full vui lòng chọn Pc khác !", {
             position: "top-center",
             autoClose: 3000,
             hideProgressBar: false,
@@ -137,19 +88,27 @@ class Computer extends Component {
             draggable: true,
             progress: undefined,
             theme: "colored",
-          }
-        );
-        break;
+          });
+        }
+        if (currentArray[i] === "ready") {
+          this.props.handleActiveShow(
+            arr,
+            arrGame,
+            arrChorme,
+            arrRenderAi,
+            arrGiaLap01
+          );
+          this.props.handleOnchange(this.state.name);
+          this.props.history.push("/pcactive"); // Chuyển hướng trang sau khi xử lý xong
+        }
       }
     }
-    this.props.handleOnchange(this.state.name);
   };
   handleOnChangeName = (event) => {
     let value = event.target.value;
     this.setState({
       name: value,
     });
-    console.log(">>>Check value:", this.state.name);
   };
   render() {
     return (
@@ -182,6 +141,7 @@ class Computer extends Component {
           <>
             <RouterPc />
             <Switch>
+              <Redirect exact from="/computer" to="/gialap" />
               <Route path="/gialap">
                 <GiaLap
                   arr={this.state.arr}
@@ -225,4 +185,4 @@ class Computer extends Component {
   }
 }
 
-export default Computer;
+export default withRouter(Computer);

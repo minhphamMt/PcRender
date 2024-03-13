@@ -6,11 +6,13 @@ class RouterPc extends Component {
   constructor(props) {
     super(props);
     this.state = {
-      activeLink: "", // State để lưu trữ liên kết đang được chọn
+      activeLink: "",
     };
   }
+  componentDidMount() {
+    this.setState({ activeLink: "/gialap" });
+  }
 
-  // Hàm xử lý sự kiện khi liên kết được nhấp
   handleLinkClick = (link) => {
     this.setState({ activeLink: link });
   };

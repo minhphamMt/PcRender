@@ -13,15 +13,97 @@ class Home extends Component {
     super(props);
     this.state = {
       coin: "0",
+      index: 1,
       boolean: false,
-      name: "minh minh minh minh mnh",
+      name: "",
+      arr: [],
+      arrGame: [],
+      arrChorme: [],
+      arrRenderAi: [],
+      arrGiaLap01: [],
+      number: [],
     };
   }
   handleOnchange = (name) => {
+    let arr = [...this.state.name];
+    arr.push(name);
     this.setState({
-      name: name,
+      name: arr,
     });
   };
+  handleActiveShow = (arr, arrGame, arrChorme, arrRenderAi, arrGiaLap01) => {
+    let arr1 = [...this.state.arr];
+    let arr2 = [...this.state.arrGame];
+    let arr3 = [...this.state.arrChorme];
+    let arr4 = [...this.state.arrRenderAi];
+    let arr5 = [...this.state.arrGiaLap01];
+
+    const mergedArray = this.mergeArrays(arr, arr1);
+    const mergedArrGame = this.mergeArrays(arrGame, arr2);
+    const mergedArrChorme = this.mergeArrays(arrChorme, arr3);
+    const mergedArrRenderAi = this.mergeArrays(arrRenderAi, arr4);
+    const mergedArrGiaLap01 = this.mergeArrays(arrGiaLap01, arr5);
+    // const mergedArray = this.mergeArrays(arr1, arr);
+    // const mergedArrGame = this.mergeArrays(arr2, arrGame);
+    // const mergedArrChorme = this.mergeArrays(arr3, arrChorme);
+    // const mergedArrRenderAi = this.mergeArrays(arr4, arrRenderAi);
+    // const mergedArrGiaLap01 = this.mergeArrays(arr5, arrGiaLap01);
+    this.setState({
+      arr: [...mergedArray],
+      arrGame: [...mergedArrGame],
+      arrChorme: [...mergedArrChorme],
+      arrRenderAi: [...mergedArrRenderAi],
+      arrGiaLap01: [...mergedArrGiaLap01],
+    });
+    this.numberActive(
+      mergedArray,
+      mergedArrGame,
+      mergedArrChorme,
+      mergedArrRenderAi,
+      mergedArrGiaLap01
+    );
+  };
+  mergeArrays = (arr1, arr2) => {
+    const result = [];
+    const maxLength = Math.max(arr1.length, arr2.length);
+    for (let i = 0; i < maxLength; i++) {
+      result.push(arr1[i] || arr2[i]);
+    }
+    return result;
+  };
+  numberActive = (
+    mergedArray,
+    mergedArrGame,
+    mergedArrChorme,
+    mergedArrRenderAi,
+    mergedArrGiaLap01
+  ) => {
+    const arrays = [
+      mergedArray,
+      mergedArrGame,
+      mergedArrChorme,
+      mergedArrRenderAi,
+      mergedArrGiaLap01,
+    ];
+    let number = [...this.state.number];
+    let index = this.state.index;
+    for (let i = 0; i < arrays.length; i++) {
+      const arrChild = arrays[i];
+      if (!number[i]) number[i] = [];
+      for (let j = 0; j < arrChild.length; j++) {
+        if (arrChild[j] === true && !number[i][j]) {
+          if (!number[i]) number[i] = [];
+          number[i][j] = index;
+          index++;
+        }
+      }
+    }
+    this.setState({
+      number: number,
+      index: index,
+    });
+  };
+
   render() {
     return (
       <>
@@ -42,16 +124,26 @@ class Home extends Component {
         <Router>
           <>
             <Header coin={this.state.coin} boolean={this.state.boolean} />
-
             <Switch>
               <Route path="/nav" exact>
                 <HomePage />
               </Route>
               <Route path="/computer">
-                <Computer handleOnchange={this.handleOnchange} />
+                <Computer
+                  handleOnchange={this.handleOnchange}
+                  handleActiveShow={this.handleActiveShow}
+                />
               </Route>
               <Route path="/pcactive">
-                <Active name={this.state.name} />
+                <Active
+                  name={this.state.name}
+                  arr={this.state.arr}
+                  arrGame={this.state.arrGame}
+                  arrChorme={this.state.arrChorme}
+                  arrRenderAi={this.state.arrRenderAi}
+                  arrGiaLap01={this.state.arrGiaLap01}
+                  number={this.state.number}
+                />
               </Route>
             </Switch>
           </>

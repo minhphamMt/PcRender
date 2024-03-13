@@ -1,6 +1,16 @@
 .box {
-    width: 500px;
-    height: 100px;
-    border: 1px solid red;
-    color: black;
+    max-width: 400px;
+    min-height: 500px;
+    border: 1px solid gray;
+    margin-top: 100px;
+    text-align: left;
+    border-radius: 10px;
+    .tag {
+        width: 150px;
+        height: 50px;
+        background-image: url("../srcimg/Screenshot\ 2024-03-09\ 023449.png");
+        background-size: contain;
+        background-repeat: no-repeat;
+        background-position: center;
+    }
 }

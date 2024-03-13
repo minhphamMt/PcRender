@@ -1,7 +1,7 @@
 import React, { Component } from "react";
 import { BrowserRouter as Router, Route, Switch } from "react-router-dom";
 import "../scss/gamming.scss";
-
+import { toast } from "react-toastify";
 class Gamming extends Component {
   constructor(props) {
     super(props);
@@ -10,19 +10,33 @@ class Gamming extends Component {
   handleActive = (message, item) => {
     let arrcoppy = [...this.props.arr];
     let mes = this.props.mes;
-
     if (mes[item] === "full" || mes[item] === "ready") {
       mes[item] = "";
     } else {
       mes[item] = message;
     }
-    console.log(">>>Check message:", mes);
     if (!arrcoppy[item]) {
       arrcoppy[item] = true;
       this.props.handleActivePa(message, arrcoppy);
     } else {
       arrcoppy[item] = !arrcoppy[item];
+
       this.props.handleActivePa(message, arrcoppy);
+    }
+    const filteredArr = arrcoppy.filter(
+      (item) => item !== undefined && item !== false
+    );
+    if (filteredArr.length > 1) {
+      toast.info("Vui lòng chỉ chọn 1 Pc !", {
+        position: "top-center",
+        autoClose: 3000,
+        hideProgressBar: false,
+        closeOnClick: true,
+        pauseOnHover: false,
+        draggable: true,
+        progress: undefined,
+        theme: "colored",
+      });
     }
   };
 
