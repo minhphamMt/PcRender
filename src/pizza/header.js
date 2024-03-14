@@ -9,30 +9,42 @@ class Header extends Component {
       coin: this.props.coin,
       boolean: this.props.boolean,
       arr: [],
+      activeLink: this.props.activeLink,
     };
   }
-
+  componentDidMount() {
+    this.setState({ activeLink: "/computer" });
+  }
+  componentDidUpdate(preState, preProps) {
+    if (preProps.activeLink !== this.props.activeLink) {
+      this.setState({
+        activeLink: this.props.activeLink,
+      });
+    }
+  }
   handleResponse = () => {
     this.setState({
       boolean: !this.state.boolean,
     });
   };
 
-  handleClick = (item) => {
-    let arrcoppy = [];
-    arrcoppy[item] = true;
+  handleClick = (link) => {
     this.setState({
       boolean: false,
-      arr: [...arrcoppy],
+      activeLink: link,
     });
   };
-  handleActive = (item) => {
-    let arrcoppy = [];
-    arrcoppy[item] = true;
+  handleActive = (link) => {
     this.setState({
-      arr: [...arrcoppy],
+      activeLink: link,
     });
   };
+  // handleClickLink = () => {
+  //   let arrcoppy = this.props.handleSetActive();
+  //   this.setState({
+  //     arr: [...arrcoppy],
+  //   });
+  // };
   render() {
     return (
       <>
@@ -55,12 +67,12 @@ class Header extends Component {
                 <ul className="nav justify-content-center nav-345">
                   <li
                     className={
-                      this.state.arr[1] === true
+                      this.state.activeLink === "/computer"
                         ? "nav-item active"
                         : "nav-item"
                     }
                     onClick={() => {
-                      this.handleClick("1");
+                      this.handleClick("/computer");
                     }}
                   >
                     <Link className="nav-link" to="/computer">
@@ -69,12 +81,12 @@ class Header extends Component {
                   </li>
                   <li
                     className={
-                      this.state.arr[2] === true
+                      this.state.activeLink === "/nav"
                         ? "nav-item active"
                         : "nav-item"
                     }
                     onClick={() => {
-                      this.handleClick("2");
+                      this.handleClick("/nav");
                     }}
                   >
                     <Link className="nav-link" to="/nav">
@@ -83,12 +95,12 @@ class Header extends Component {
                   </li>
                   <li
                     className={
-                      this.state.arr[3] === true
+                      this.state.activeLink === "#"
                         ? "nav-item active"
                         : "nav-item"
                     }
                     onClick={() => {
-                      this.handleClick("3");
+                      this.handleClick("#");
                     }}
                   >
                     <Link className="nav-link" to="#">
@@ -97,12 +109,12 @@ class Header extends Component {
                   </li>
                   <li
                     className={
-                      this.state.arr[4] === true
+                      this.state.activeLink === "#"
                         ? "nav-item active"
                         : "nav-item"
                     }
                     onClick={() => {
-                      this.handleClick("4");
+                      this.handleClick("#");
                     }}
                   >
                     <Link className="nav-link" to="#">
@@ -111,12 +123,12 @@ class Header extends Component {
                   </li>
                   <li
                     className={
-                      this.state.arr[5] === true
+                      this.state.activeLink === "/pcactive"
                         ? "nav-item active"
                         : "nav-item"
                     }
                     onClick={() => {
-                      this.handleClick("5");
+                      this.handleClick("/pcactive");
                     }}
                   >
                     <Link className="nav-link" to="/pcactive">
@@ -131,12 +143,12 @@ class Header extends Component {
                 <ul className="nav justify-content-center">
                   <li
                     className={
-                      this.state.arr[1] === true
+                      this.state.activeLink === "/computer"
                         ? "nav-item active"
                         : "nav-item"
                     }
                     onClick={() => {
-                      this.handleActive("1");
+                      this.handleActive("/computer");
                     }}
                   >
                     <Link className="nav-link" to="/computer">
@@ -145,12 +157,12 @@ class Header extends Component {
                   </li>
                   <li
                     className={
-                      this.state.arr[2] === true
+                      this.state.activeLink === "/nav"
                         ? "nav-item active"
                         : "nav-item"
                     }
                     onClick={() => {
-                      this.handleActive("2");
+                      this.handleActive("/nav");
                     }}
                   >
                     <Link className="nav-link" to="/nav">
@@ -159,12 +171,12 @@ class Header extends Component {
                   </li>
                   <li
                     className={
-                      this.state.arr[3] === true
+                      this.state.activeLink === "#"
                         ? "nav-item active"
                         : "nav-item"
                     }
                     onClick={() => {
-                      this.handleActive("3");
+                      this.handleActive("#");
                     }}
                   >
                     <Link className="nav-link" to="#">
@@ -173,12 +185,12 @@ class Header extends Component {
                   </li>
                   <li
                     className={
-                      this.state.arr[4] === true
+                      this.state.activeLink === "#"
                         ? "nav-item active"
                         : "nav-item"
                     }
                     onClick={() => {
-                      this.handleActive("4");
+                      this.handleActive("#");
                     }}
                   >
                     <Link className="nav-link" to="#">
@@ -187,12 +199,12 @@ class Header extends Component {
                   </li>
                   <li
                     className={
-                      this.state.arr[5] === true
+                      this.state.activeLink === "/pcactive"
                         ? "nav-item active"
                         : "nav-item"
                     }
                     onClick={() => {
-                      this.handleActive("5");
+                      this.handleActive("/pcactive");
                     }}
                   >
                     <Link className="nav-link" to="/pcactive">

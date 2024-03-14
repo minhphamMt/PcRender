@@ -19,7 +19,7 @@ class RouterPc extends Component {
 
   render() {
     return (
-      <div className="container-fuild">
+      <div className="container-fuild kkkk">
         <div className="container">
           <div className="nav-container">
             <nav className="navbar navbar-expand-sm  navbar-light">

@@ -1,5 +1,10 @@
 import React, { Component } from "react";
-import { BrowserRouter as Router, Route, Switch } from "react-router-dom";
+import {
+  BrowserRouter as Router,
+  Route,
+  Switch,
+  Redirect,
+} from "react-router-dom";
 import { Slide, Zoom, Flip, Bounce } from "react-toastify";
 import "./home.scss";
 import Header from "./header";
@@ -22,6 +27,7 @@ class Home extends Component {
       arrRenderAi: [],
       arrGiaLap01: [],
       number: [],
+      activeLink: "",
     };
   }
   handleOnchange = (name) => {
@@ -103,6 +109,11 @@ class Home extends Component {
       index: index,
     });
   };
+  handleSetActive = () => {
+    this.setState({
+      activeLink: "/pcactive",
+    });
+  };
 
   render() {
     return (
@@ -123,8 +134,14 @@ class Home extends Component {
         />
         <Router>
           <>
-            <Header coin={this.state.coin} boolean={this.state.boolean} />
+            <Header
+              coin={this.state.coin}
+              boolean={this.state.boolean}
+              location={this.props.location}
+              activeLink={this.state.activeLink}
+            />
             <Switch>
+              <Redirect exact from="/" to="/computer" />
               <Route path="/nav" exact>
                 <HomePage />
               </Route>
@@ -132,6 +149,8 @@ class Home extends Component {
                 <Computer
                   handleOnchange={this.handleOnchange}
                   handleActiveShow={this.handleActiveShow}
+                  boolean={this.state.boolean}
+                  handleSetActive={this.handleSetActive}
                 />
               </Route>
               <Route path="/pcactive">
@@ -143,6 +162,7 @@ class Home extends Component {
                   arrRenderAi={this.state.arrRenderAi}
                   arrGiaLap01={this.state.arrGiaLap01}
                   number={this.state.number}
+                  handleSetActive={this.handleSetActive}
                 />
               </Route>
             </Switch>

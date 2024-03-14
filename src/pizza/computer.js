@@ -99,7 +99,8 @@ class Computer extends Component {
             arrGiaLap01
           );
           this.props.handleOnchange(this.state.name);
-          this.props.history.push("/pcactive"); // Chuyển hướng trang sau khi xử lý xong
+          this.props.handleSetActive();
+          this.props.history.push("/pcactive");
         }
       }
     }
