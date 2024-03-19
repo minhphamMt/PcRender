@@ -30,6 +30,42 @@ class Home extends Component {
       activeLink: "",
     };
   }
+
+  handleDelete = (index, cate, namedelete) => {
+    let newState = { ...this.state };
+    newState[cate][index] = "";
+    newState["name"][namedelete] = "0";
+    let numberCoppy = newState["number"];
+    for (let i = 0; i < numberCoppy.length; i++) {
+      let coppy = numberCoppy[i];
+      for (let j = 0; j < numberCoppy.length; j++) {
+        if (coppy[j] === namedelete + 1) {
+          coppy[j] = -1;
+        }
+      }
+    }
+    newState["number"] = [...numberCoppy];
+    let filter = newState.name.filter((item, index) => {
+      return item !== "0";
+    });
+    if (filter.length === 0) {
+      newState["number"] = [];
+      newState["name"] = [];
+      newState["index"] = 1;
+    }
+    this.setState({ ...newState });
+    toast.success("Đã xóa thành công !", {
+      position: "top-center",
+      autoClose: 2000,
+      hideProgressBar: true,
+      closeOnClick: true,
+      pauseOnHover: true,
+      draggable: false,
+      progress: undefined,
+      theme: "colored",
+    });
+  };
+
   handleOnchange = (name) => {
     let arr = [...this.state.name];
     arr.push(name);
@@ -43,17 +79,11 @@ class Home extends Component {
     let arr3 = [...this.state.arrChorme];
     let arr4 = [...this.state.arrRenderAi];
     let arr5 = [...this.state.arrGiaLap01];
-
     const mergedArray = this.mergeArrays(arr, arr1);
     const mergedArrGame = this.mergeArrays(arrGame, arr2);
     const mergedArrChorme = this.mergeArrays(arrChorme, arr3);
     const mergedArrRenderAi = this.mergeArrays(arrRenderAi, arr4);
     const mergedArrGiaLap01 = this.mergeArrays(arrGiaLap01, arr5);
-    // const mergedArray = this.mergeArrays(arr1, arr);
-    // const mergedArrGame = this.mergeArrays(arr2, arrGame);
-    // const mergedArrChorme = this.mergeArrays(arr3, arrChorme);
-    // const mergedArrRenderAi = this.mergeArrays(arr4, arrRenderAi);
-    // const mergedArrGiaLap01 = this.mergeArrays(arr5, arrGiaLap01);
     this.setState({
       arr: [...mergedArray],
       arrGame: [...mergedArrGame],
@@ -122,13 +152,13 @@ class Home extends Component {
           className="toast-container"
           position="top-center"
           autoClose={3000}
-          hideProgressBar={false}
+          hideProgressBar={true}
           newestOnTop={false}
-          closeOnClick
+          closeOnClick={true}
           rtl={false}
           pauseOnFocusLoss
           draggable
-          pauseOnHover
+          pauseOnHover={true}
           theme="light"
           transition={Zoom}
         />
@@ -151,6 +181,13 @@ class Home extends Component {
                   handleActiveShow={this.handleActiveShow}
                   boolean={this.state.boolean}
                   handleSetActive={this.handleSetActive}
+                  arrCheck={[
+                    this.state.arr,
+                    this.state.arrGame,
+                    this.state.arrChorme,
+                    this.state.arrRenderAi,
+                    this.state.arrGiaLap01,
+                  ]}
                 />
               </Route>
               <Route path="/pcactive">
@@ -163,6 +200,7 @@ class Home extends Component {
                   arrGiaLap01={this.state.arrGiaLap01}
                   number={this.state.number}
                   handleSetActive={this.handleSetActive}
+                  handleDelete={this.handleDelete}
                 />
               </Route>
             </Switch>

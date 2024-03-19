@@ -22,13 +22,25 @@ class Active extends Component {
     if (prevProps.name !== this.props.name) {
       this.setState({ name: this.props.name });
     }
-    if (prevProps.arr !== this.props.arr) {
-      this.setState({ arr: this.props.arr });
+    // if (prevProps.arr !== this.props.arr) {
+    //   this.setState({ arr: this.props.arr });
+    // }
+    // if (prevProps.arrGame !== this.props.arrGame) {
+    //   this.setState({ arrGame: this.props.arrGame });
+    // }
+    // if (prevProps.arrRenderAi !== this.props.arrRenderAi) {
+    //   this.setState({ arrRenderAi: this.props.arrRenderAi });
+    // }
+    // if (prevProps.arrGiaLap01 !== this.props.arrGiaLap01) {
+    //   this.setState({ arrGiaLap01: this.props.arrGiaLap01 });
+    // }
+    if (prevProps.number !== this.props.number) {
+      this.setState({ number: this.props.number });
     }
   }
   handleName = (a) => {
     let name = [...this.state.name];
-    for (let i = 0; i < 6; i++) {
+    for (let i = 0; i < name.length; i++) {
       if (a === i + 1) {
         return name[i];
       }
@@ -37,11 +49,9 @@ class Active extends Component {
   render() {
     let { name, arr, arrGame, arrChorme, arrRenderAi, arrGiaLap01 } =
       this.state;
-    // console.log(">>>check index:", this.state.index);
-    console.log(">>>check number:", this.state.number);
-    // console.log(">>>check name:", name);
     let number = [...this.state.number];
-
+    console.log(">>>check number 4-3", number);
+    console.log(">>>check name", name);
     return (
       <>
         <div className="container">
@@ -51,7 +61,7 @@ class Active extends Component {
                 <>
                   <div className="box">
                     <h3 className="name">{this.handleName(number[0][2])}</h3>
-                    <div>
+                    <div className="box-child">
                       <div className="header">
                         <div className="img"></div>
                       </div>
@@ -103,7 +113,14 @@ class Active extends Component {
                           <strong>Support</strong>: Team support 24/7
                         </li>
                       </ul>
-                      <div className="tag"></div>
+
+                      <button className="rent"></button>
+                      <span
+                        className="delete"
+                        onClick={() =>
+                          this.props.handleDelete("2", "arr", number[0][2] - 1)
+                        }
+                      ></span>
                     </div>
                   </div>
                 </>
@@ -112,7 +129,7 @@ class Active extends Component {
                 <>
                   <div className="box">
                     <h3 className="name">{this.handleName(number[0][3])}</h3>
-                    <div>
+                    <div className="box-child">
                       <div className="header">
                         <div className="img"></div>
                       </div>
@@ -164,7 +181,13 @@ class Active extends Component {
                           <strong>Support</strong>: Team support 24/7
                         </li>
                       </ul>
-                      <div className="tag"></div>
+                      <button className="rent"></button>
+                      <span
+                        className="delete"
+                        onClick={() =>
+                          this.props.handleDelete("3", "arr", number[0][3] - 1)
+                        }
+                      ></span>
                     </div>
                   </div>
                 </>
@@ -173,7 +196,7 @@ class Active extends Component {
                 <>
                   <div className="box">
                     <h3 className="name">{this.handleName(number[1][1])}</h3>
-                    <div>
+                    <div className="box-child">
                       <div className="header">
                         <div className="img"></div>
                       </div>
@@ -225,7 +248,17 @@ class Active extends Component {
                           <strong>Support</strong>: Team support 24/7
                         </li>
                       </ul>
-                      <div className="tag"></div>
+                      <button className="rent"></button>
+                      <span
+                        className="delete"
+                        onClick={() =>
+                          this.props.handleDelete(
+                            "1",
+                            "arrGame",
+                            number[1][1] - 1
+                          )
+                        }
+                      ></span>
                     </div>
                   </div>
                 </>
@@ -234,7 +267,7 @@ class Active extends Component {
                 <>
                   <div className="box">
                     <h3 className="name">{this.handleName(number[1][2])}</h3>
-                    <div>
+                    <div className="box-child">
                       <div className="header">
                         <div className="img"></div>
                       </div>
@@ -286,7 +319,17 @@ class Active extends Component {
                           <strong>Support</strong>: Team support 24/7
                         </li>
                       </ul>
-                      <div className="tag"></div>
+                      <button className="rent"></button>
+                      <span
+                        className="delete"
+                        onClick={() =>
+                          this.props.handleDelete(
+                            "2",
+                            "arrGame",
+                            number[1][2] - 1
+                          )
+                        }
+                      ></span>
                     </div>
                   </div>
                 </>
@@ -294,8 +337,8 @@ class Active extends Component {
               {arrRenderAi && arrRenderAi[1] === true && (
                 <>
                   <div className="box">
-                    <h3 className="name">{this.handleName(number[2][1])}</h3>
-                    <div>
+                    <h3 className="name">{this.handleName(number[3][1])}</h3>
+                    <div className="box-child">
                       <div className="header">
                         <div className="img"></div>
                       </div>
@@ -347,7 +390,17 @@ class Active extends Component {
                           <strong>Support</strong>: Team support 24/7
                         </li>
                       </ul>
-                      <div className="tag"></div>
+                      <button className="rent"></button>
+                      <span
+                        className="delete"
+                        onClick={() =>
+                          this.props.handleDelete(
+                            "1",
+                            "arrRenderAi",
+                            number[3][1] - 1
+                          )
+                        }
+                      ></span>
                     </div>
                   </div>
                 </>
@@ -356,7 +409,7 @@ class Active extends Component {
                 <>
                   <div className="box">
                     <h3 className="name">{this.handleName(number[4][1])}</h3>
-                    <div>
+                    <div className="box-child">
                       <div className="header">
                         <div className="img"></div>
                       </div>
@@ -408,7 +461,17 @@ class Active extends Component {
                           <strong>Support</strong>: Team support 24/7
                         </li>
                       </ul>
-                      <div className="tag"></div>
+                      <button className="rent"></button>
+                      <span
+                        className="delete"
+                        onClick={() =>
+                          this.props.handleDelete(
+                            "1",
+                            "arrGiaLap01",
+                            number[4][1] - 1
+                          )
+                        }
+                      ></span>
                     </div>
                   </div>
                 </>
@@ -417,7 +480,7 @@ class Active extends Component {
                 <>
                   <div className="box">
                     <h3 className="name">{this.handleName(number[4][3])}</h3>
-                    <div>
+                    <div className="box-child">
                       <div className="header">
                         <div className="img"></div>
                       </div>
@@ -469,13 +532,22 @@ class Active extends Component {
                           <strong>Support</strong>: Team support 24/7
                         </li>
                       </ul>
-                      <div className="tag"></div>
+                      <button className="rent"></button>
+                      <span
+                        className="delete"
+                        onClick={() =>
+                          this.props.handleDelete(
+                            "3",
+                            "arrGiaLap01",
+                            number[4][3] - 1
+                          )
+                        }
+                      ></span>
                     </div>
                   </div>
                 </>
               )}
             </>
-            ;
           </div>
         </div>
       </>

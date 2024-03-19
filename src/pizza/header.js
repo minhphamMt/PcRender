@@ -39,12 +39,12 @@ class Header extends Component {
       activeLink: link,
     });
   };
-  // handleClickLink = () => {
-  //   let arrcoppy = this.props.handleSetActive();
-  //   this.setState({
-  //     arr: [...arrcoppy],
-  //   });
-  // };
+  scrollToTop = () => {
+    window.scrollTo({
+      top: 0,
+      behavior: "smooth",
+    });
+  };
   render() {
     return (
       <>
@@ -60,7 +60,7 @@ class Header extends Component {
                   this.handleResponse();
                 }}
               ></p>
-              <p className="avatar"></p>
+              <p className="avatar" onClick={() => this.scrollToTop()}></p>
               <p className="bell"></p>
               <p className="coin-item"></p>
               {this.state.boolean === true && window.innerWidth <= 1300 && (

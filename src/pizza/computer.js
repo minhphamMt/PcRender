@@ -24,6 +24,7 @@ class Computer extends Component {
       arrChorme: [],
       arrRenderAi: [],
       arrGiaLap01: [],
+
       //--------------
       active: [],
       mesAi: [],
@@ -32,34 +33,125 @@ class Computer extends Component {
       mesgl: [],
       name: "",
       computerActive: [],
+      index: 1,
     };
   }
 
   handleActive = (message, arrcoppy) => {
+    let { arr, arrGame, arrChorme, arrRenderAi, arrGiaLap01 } = this.state;
+    const arrCheck1 = [].concat(
+      ...[...arrcoppy, ...arrGame, ...arrChorme, ...arrRenderAi, ...arrGiaLap01]
+    );
+    const filteredArr = arrCheck1.filter((item) => item === true);
+    console.log(">>>Check arr:", arrCheck1);
+    if (filteredArr.length > 1) {
+      toast.info("Vui lòng chỉ chọn 1 Pc !", {
+        position: "top-center",
+        autoClose: 3000,
+        hideProgressBar: false,
+        closeOnClick: true,
+        pauseOnHover: false,
+        draggable: true,
+        progress: undefined,
+        theme: "colored",
+      });
+    }
     this.setState({
       arr: arrcoppy,
     });
   };
 
   handleGame = (message, arrcoppy) => {
+    let { arr, arrGame, arrChorme, arrRenderAi, arrGiaLap01 } = this.state;
+    const arrCheck1 = [].concat(
+      ...[...arr, ...arrcoppy, ...arrChorme, ...arrRenderAi, ...arrGiaLap01]
+    );
+    const filteredArr = arrCheck1.filter((item) => item === true);
+    console.log(">>>Check arr:", arrCheck1);
+    if (filteredArr.length > 1) {
+      toast.info("Vui lòng chỉ chọn 1 Pc !", {
+        position: "top-center",
+        autoClose: 3000,
+        hideProgressBar: false,
+        closeOnClick: true,
+        pauseOnHover: false,
+        draggable: true,
+        progress: undefined,
+        theme: "colored",
+      });
+    }
     this.setState({
       arrGame: arrcoppy,
     });
   };
 
   handleChorme = (message, arrcoppy) => {
+    let { arr, arrGame, arrChorme, arrRenderAi, arrGiaLap01 } = this.state;
+    const arrCheck1 = [].concat(
+      ...[...arr, ...arrGame, ...arrcoppy, ...arrRenderAi, ...arrGiaLap01]
+    );
+    const filteredArr = arrCheck1.filter((item) => item === true);
+    console.log(">>>Check arr:", arrCheck1);
+    if (filteredArr.length > 1) {
+      toast.info("Vui lòng chỉ chọn 1 Pc !", {
+        position: "top-center",
+        autoClose: 3000,
+        hideProgressBar: false,
+        closeOnClick: true,
+        pauseOnHover: false,
+        draggable: true,
+        progress: undefined,
+        theme: "colored",
+      });
+    }
     this.setState({
       arrChorme: arrcoppy,
     });
   };
 
   handleRenderAi = (message, arrcoppy) => {
+    let { arr, arrGame, arrChorme, arrRenderAi, arrGiaLap01 } = this.state;
+    const arrCheck1 = [].concat(
+      ...[...arr, ...arrGame, ...arrChorme, ...arrcoppy, ...arrGiaLap01]
+    );
+    const filteredArr = arrCheck1.filter((item) => item === true);
+    console.log(">>>Check arr:", arrCheck1);
+    if (filteredArr.length > 1) {
+      toast.info("Vui lòng chỉ chọn 1 Pc !", {
+        position: "top-center",
+        autoClose: 3000,
+        hideProgressBar: false,
+        closeOnClick: true,
+        pauseOnHover: false,
+        draggable: true,
+        progress: undefined,
+        theme: "colored",
+      });
+    }
     this.setState({
       arrRenderAi: arrcoppy,
     });
   };
 
   handleGiaLap01 = (message, arrcoppy) => {
+    let { arr, arrGame, arrChorme, arrRenderAi, arrGiaLap01 } = this.state;
+    const arrCheck1 = [].concat(
+      ...[...arr, ...arrGame, ...arrChorme, ...arrRenderAi, ...arrcoppy]
+    );
+    const filteredArr = arrCheck1.filter((item) => item === true);
+    console.log(">>>Check arr:", arrCheck1);
+    if (filteredArr.length > 1) {
+      toast.info("Vui lòng chỉ chọn 1 Pc !", {
+        position: "top-center",
+        autoClose: 3000,
+        hideProgressBar: false,
+        closeOnClick: true,
+        pauseOnHover: false,
+        draggable: true,
+        progress: undefined,
+        theme: "colored",
+      });
+    }
     this.setState({
       arrGiaLap01: arrcoppy,
     });
@@ -89,22 +181,53 @@ class Computer extends Component {
             progress: undefined,
             theme: "colored",
           });
+          break;
         }
         if (currentArray[i] === "ready") {
-          this.props.handleActiveShow(
-            arr,
-            arrGame,
-            arrChorme,
-            arrRenderAi,
-            arrGiaLap01
-          );
-          this.props.handleOnchange(this.state.name);
-          this.props.handleSetActive();
-          this.props.history.push("/pcactive");
+          let arrCheck = this.props.arrCheck;
+          let arrCheck1 = [arr, arrGame, arrChorme, arrRenderAi, arrGiaLap01];
+          let isPcFull = false;
+
+          for (let a = 0; a < arrCheck.length; a++) {
+            let arrChild = arrCheck[a];
+            let arrChild1 = arrCheck1[a];
+            for (let j = 0; j < arrChild.length; j++) {
+              if (arrChild[j] === arrChild1[j] && arrChild1[j] === true) {
+                toast.warn("PC đã được tạo trước đó. Vui lòng chọn PC khác!", {
+                  position: "top-center",
+                  autoClose: 2000,
+                  hideProgressBar: true,
+                  closeOnClick: true,
+                  pauseOnHover: false,
+                  draggable: false,
+                  progress: undefined,
+                  theme: "colored",
+                });
+                isPcFull = true;
+                break;
+              }
+            }
+            if (isPcFull) {
+              break;
+            }
+          }
+          if (!isPcFull) {
+            this.props.handleActiveShow(
+              arr,
+              arrGame,
+              arrChorme,
+              arrRenderAi,
+              arrGiaLap01
+            );
+            this.props.handleOnchange(this.state.name);
+            this.props.handleSetActive();
+            this.props.history.push("/pcactive");
+          }
         }
       }
     }
   };
+
   handleOnChangeName = (event) => {
     let value = event.target.value;
     this.setState({
@@ -112,6 +235,10 @@ class Computer extends Component {
     });
   };
   render() {
+    let { arr, arrGame, arrChorme, arrRenderAi, arrGiaLap01 } = this.state;
+    const arrCheck1 = [].concat(
+      ...[...arr, ...arrGame, ...arrChorme, ...arrRenderAi, ...arrGiaLap01]
+    );
     return (
       <>
         <div className="header-form container  col-12">
@@ -148,6 +275,7 @@ class Computer extends Component {
                   arr={this.state.arr}
                   handleActivePa={this.handleActive}
                   mes={this.state.active}
+                  arrbig={arrCheck1}
                 />
               </Route>
               <Route path="/gamming">
@@ -155,6 +283,7 @@ class Computer extends Component {
                   arr={this.state.arrGame}
                   handleActivePa={this.handleGame}
                   mes={this.state.mesGame}
+                  arrbig={arrCheck1}
                 />
               </Route>
               <Route path="/chorme">

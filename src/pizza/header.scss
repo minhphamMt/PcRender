@@ -25,14 +25,18 @@
             .avatar {
                 position: absolute;
                 right: 30px;
-                width: 50px;
-                height: 50px;
-                background-image: url("./srcimg/profile.png");
+                width: 40px;
+                height: 40px;
+                background-image: url("./srcimg/home.png");
                 background-repeat: no-repeat;
                 background-size: contain;
                 background-position: center;
                 margin-top: 15px;
                 z-index: 2;
+                &:hover {
+                    background-image: url("./srcimg/home\ \(1\).png");
+                    cursor: pointer;
+                }
             }
             .bell {
                 position: absolute;
@@ -71,11 +75,9 @@
                     min-width: 110px;
                     height: 98%;
                     cursor: pointer;
-
                     &:hover {
                         background-color: rgba(128, 128, 128, 0.262);
                     }
-
                     .nav-link {
                         color: black;
                         margin-top: 18px;
@@ -122,10 +124,18 @@
             }
             .avatar {
                 position: absolute;
-                margin-right: 115px;
+                margin-right: 45px;
+                top: 3px;
+                &:hover {
+                    background-image: url("./srcimg/home.png");
+                }
             }
             .bell {
                 margin-right: 0px;
+                display: none;
+            }
+            .coin-item {
+                display: none;
             }
         }
         .nav {
