@@ -8,9 +8,10 @@
             width: 22%;
             height: inherit;
             .logo {
+                margin-top: 15px;
                 margin-left: 50px;
                 width: 20%;
-                height: inherit;
+                height: 50px;
                 background-image: url("./srcimg/logo.png");
                 background-size: contain;
                 background-repeat: no-repeat;
@@ -193,7 +194,9 @@
     .left-content {
         .logo {
             scale: 2.6 !important;
+            height: 50px !important;
             margin-left: 125px !important;
+            margin-top: 15px;
         }
     }
     .right-content {
