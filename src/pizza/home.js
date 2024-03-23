@@ -144,7 +144,11 @@ class Home extends Component {
       activeLink: "/pcactive",
     });
   };
-
+  handleSetLink = (link) => {
+    this.setState({
+      activeLink: link,
+    });
+  };
   render() {
     return (
       <>
@@ -169,10 +173,11 @@ class Home extends Component {
               boolean={this.state.boolean}
               location={this.props.location}
               activeLink={this.state.activeLink}
+              handleSetLink={this.handleSetLink}
             />
             <Switch>
               <Redirect exact from="/" to="/computer" />
-              <Route path="/nav" exact>
+              <Route path="/bank">
                 <HomePage />
               </Route>
               <Route path="/computer">

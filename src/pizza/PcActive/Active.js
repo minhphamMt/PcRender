@@ -14,11 +14,14 @@ class Active extends Component {
       arrRenderAi: this.props.arrRenderAi,
       arrGiaLap01: this.props.arrGiaLap01,
       number: this.props.number,
+      select: "",
+      coin: "",
+      time: "",
     };
   }
   componentDidMount() {}
 
-  componentDidUpdate(prevProps) {
+  componentDidUpdate(prevProps, preState) {
     if (prevProps.name !== this.props.name) {
       this.setState({ name: this.props.name });
     }
@@ -46,17 +49,131 @@ class Active extends Component {
       }
     }
   };
+  handleSelect = (event) => {
+    let selectedValue = event.target.value;
+    this.setState({
+      select: selectedValue,
+      time: "",
+      coin: 0,
+    });
+  };
+  handleOnChangeTime = (event) => {
+    let select = +this.state.select;
+    let time = event.target.value;
+    let coin = 0;
+    console.log(">>>check select:", select);
+    if (select === +1) {
+      coin = time * 9000;
+    } else if (select === +2) {
+      coin = time * 99000;
+    } else {
+      coin = time * 120000;
+    }
+    const formattedCoin = coin.toLocaleString("en-US");
+    this.setState({
+      time: time,
+      coin: formattedCoin,
+    });
+  };
   render() {
     let { name, arr, arrGame, arrChorme, arrRenderAi, arrGiaLap01 } =
       this.state;
     let number = [...this.state.number];
-    console.log(">>>check number 4-3", number);
-    console.log(">>>check name", name);
     return (
       <>
+        {" "}
         <div className="container">
-          <div className="row">
+          <div className="row row-1">
             <>
+              <div className="modal fade" id="myModal">
+                <div className="modal-dialog modal-dialog-centered">
+                  <div className="modal-content">
+                    <div className="modal-header">
+                      <h4 className="modal-title">Nhập Thông Tin Thuê</h4>
+                      <button
+                        type="button"
+                        className="btn-close"
+                        data-bs-dismiss="modal"
+                      ></button>
+                    </div>
+
+                    <div className="modal-body">
+                      <div className="row">
+                        <div className="col-4">
+                          <label className="form-label">
+                            Chọn Đơn Vị Thuê:
+                          </label>
+                        </div>
+                        <div className="col-4">
+                          <select
+                            className="form-select"
+                            onChange={(event) => {
+                              this.handleSelect(event);
+                            }}
+                          >
+                            <option disabled selected>
+                              Chọn Đơn Vị
+                            </option>
+                            <option value={1}>Giờ</option>
+                            <option value={2}>Ngày</option>
+                            <option value={3}>Tháng</option>
+                          </select>
+                        </div>
+                        <div className="col-4"></div>
+                      </div>
+                      <div className="row  mt-3">
+                        {" "}
+                        <div className="col-4">
+                          <label className="form-label">
+                            Chọn Đơn Vị Thuê:
+                          </label>
+                        </div>
+                        <div className="col-8">
+                          <input
+                            value={this.state.time}
+                            type="number"
+                            class="form-control"
+                            id="email"
+                            placeholder="Nhập Thời Gian Thuê"
+                            name="email"
+                            min="1"
+                            onChange={(event) => {
+                              this.handleOnChangeTime(event);
+                            }}
+                          />
+                        </div>
+                      </div>
+                      <div className="row mt-3">
+                        {" "}
+                        <p className="col-4 text-left">Số Tiền Phải Trả :</p>
+                        <div className="col-2">{this.state.coin}VND</div>
+                        <div className="col-3"></div>
+                        <div className="col-3"></div>
+                      </div>
+                      <div className="row mt-3">
+                        {" "}
+                        <p
+                          className="col-12 text-left"
+                          style={{ textAlign: "left", color: "red" }}
+                        >
+                          Lưu ý: Không hoàn tiền khi đã thuê máy ,vui lòng chọn
+                          đúng thời gian sử dụng!
+                        </p>
+                      </div>
+                    </div>
+
+                    <div className="modal-footer">
+                      <button
+                        type="button"
+                        className="btn btn-danger"
+                        data-bs-dismiss="modal"
+                      >
+                        Thuê
+                      </button>
+                    </div>
+                  </div>
+                </div>
+              </div>
               {arr && arr[2] === true && (
                 <>
                   <div className="box">
@@ -114,7 +231,11 @@ class Active extends Component {
                         </li>
                       </ul>
 
-                      <button className="rent"></button>
+                      <button
+                        className="rent"
+                        data-bs-toggle="modal"
+                        data-bs-target="#myModal"
+                      ></button>
                       <span
                         className="delete"
                         onClick={() =>
@@ -181,7 +302,11 @@ class Active extends Component {
                           <strong>Support</strong>: Team support 24/7
                         </li>
                       </ul>
-                      <button className="rent"></button>
+                      <button
+                        className="rent"
+                        data-bs-toggle="modal"
+                        data-bs-target="#myModal"
+                      ></button>
                       <span
                         className="delete"
                         onClick={() =>
@@ -248,7 +373,11 @@ class Active extends Component {
                           <strong>Support</strong>: Team support 24/7
                         </li>
                       </ul>
-                      <button className="rent"></button>
+                      <button
+                        className="rent"
+                        data-bs-toggle="modal"
+                        data-bs-target="#myModal"
+                      ></button>
                       <span
                         className="delete"
                         onClick={() =>
@@ -319,7 +448,11 @@ class Active extends Component {
                           <strong>Support</strong>: Team support 24/7
                         </li>
                       </ul>
-                      <button className="rent"></button>
+                      <button
+                        className="rent"
+                        data-bs-toggle="modal"
+                        data-bs-target="#myModal"
+                      ></button>
                       <span
                         className="delete"
                         onClick={() =>
@@ -390,7 +523,11 @@ class Active extends Component {
                           <strong>Support</strong>: Team support 24/7
                         </li>
                       </ul>
-                      <button className="rent"></button>
+                      <button
+                        className="rent"
+                        data-bs-toggle="modal"
+                        data-bs-target="#myModal"
+                      ></button>
                       <span
                         className="delete"
                         onClick={() =>
@@ -461,7 +598,11 @@ class Active extends Component {
                           <strong>Support</strong>: Team support 24/7
                         </li>
                       </ul>
-                      <button className="rent"></button>
+                      <button
+                        className="rent"
+                        data-bs-toggle="modal"
+                        data-bs-target="#myModal"
+                      ></button>
                       <span
                         className="delete"
                         onClick={() =>
@@ -532,7 +673,11 @@ class Active extends Component {
                           <strong>Support</strong>: Team support 24/7
                         </li>
                       </ul>
-                      <button className="rent"></button>
+                      <button
+                        className="rent"
+                        data-bs-toggle="modal"
+                        data-bs-target="#myModal"
+                      ></button>
                       <span
                         className="delete"
                         onClick={() =>

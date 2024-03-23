@@ -1,12 +1,185 @@
-.home {
-    position: relative;
-    top: 90px;
-    .title {
-        color: black;
+.banking-box {
+    display: flex;
+    width: 100vw;
+    height: 85vh;
+    // border: 1px solid red;
+    margin-top: 100px;
+    padding: 0;
+    box-shadow: 0px 5px 15px rgba(0, 0, 0, 0.25);
+    .left-content {
+        width: 50%;
+        height: inherit;
+        padding: 0;
+        text-align: center;
+
+        .title {
+            margin-top: 10px;
+        }
+        .bank {
+            width: 90%;
+            height: 90%;
+            box-shadow: 0px 5px 15px rgba(0, 0, 0, 0.25);
+            margin: 0 auto;
+            margin-top: 20px;
+            .choose-bank {
+                width: 100%;
+                height: 50%;
+                display: grid;
+                grid-template-columns: repeat(3, 1fr);
+                grid-template-rows: repeat(3, 1fr);
+                gap: 1px;
+                div {
+                    cursor: pointer;
+                }
+                .mb-bank {
+                    background-image: url("./srcbank/mb.png");
+                    background-size: contain;
+                    background-repeat: no-repeat;
+                    background-position: center;
+                    scale: 0.8;
+                }
+                .agri-bank {
+                    background-image: url("./srcbank/logo-agribank-dongphucvina.vn2_.png");
+                    background-size: contain;
+                    background-repeat: no-repeat;
+                    background-position: center;
+                    scale: 0.9;
+                }
+                .bidv {
+                    background-image: url("./srcbank/Logo_BIDV.svg.png");
+                    background-size: contain;
+                    background-repeat: no-repeat;
+                    background-position: center;
+                    scale: 0.8;
+                }
+                .tp-bank {
+                    background-image: url("./srcbank/tp4.jpg");
+                    background-size: contain;
+                    background-repeat: no-repeat;
+                    background-position: center;
+                }
+                .viettin-bank {
+                    background-image: url("./srcbank/viettinbank.png");
+                    background-size: contain;
+                    background-repeat: no-repeat;
+                    background-position: center;
+                    scale: 0.9;
+                }
+                .vc-bank {
+                    background-image: url("./srcbank/logo-vietcombank-khong-slogan.png");
+                    background-size: contain;
+                    background-repeat: no-repeat;
+                    background-position: center;
+                    scale: 0.9;
+                }
+                .vp-bank {
+                    background-image: url("./srcbank/vp-bank.jpg");
+                    background-size: contain;
+                    background-repeat: no-repeat;
+                    background-position: center;
+                    scale: 0.9;
+                }
+                .acb {
+                    background-image: url("./srcbank/acb.png");
+                    background-size: contain;
+                    background-repeat: no-repeat;
+                    background-position: center;
+                    scale: 2;
+                    margin-top: 25px;
+                }
+            }
+            .tag-bank {
+                width: 100%;
+                height: 50%;
+                background-image: url("./srcimg/BIDC-Angkor-Air-Visa-Debit-Card-2-768x483.jpg");
+                background-size: contain;
+                background-repeat: no-repeat;
+                background-position: center;
+                scale: 0.9;
+            }
+        }
     }
-    .box {
-        width: 100px;
-        height: 100px;
-        background-color: red;
+    .right-content {
+        width: 50%;
+        height: inherit;
+        border-left: 1px solid gray;
+        padding: 0;
+        text-align: center;
+        h4 {
+            margin-top: 10px;
+        }
+        .number-card {
+            width: 90%;
+            margin: 0 auto;
+            margin-top: 20px;
+            height: 50px;
+            box-shadow: 0px 0px 5px 0px rgba(0, 0, 0, 0.25);
+            font-size: 18px;
+        }
+        .code-exact {
+            display: flex;
+            letter-spacing: 3px;
+            width: 200px;
+            height: 70px;
+            box-shadow: 0px 0px 5px 0px rgba(0, 0, 0, 0.25);
+            align-items: center;
+            justify-content: center;
+            font-size: 30px;
+            margin: 0 auto;
+            margin-top: 20px;
+            margin-right: 33px;
+            border-radius: 5px;
+            text-shadow: 0px 0px 9px #000000c7;
+        }
+        .note {
+            margin-top: 20px;
+            color: red;
+            font-size: 18px;
+        }
+        .btn41-43 {
+            margin-top: 20px;
+            padding: 10px 25px;
+            font-family: "Roboto", sans-serif;
+            font-weight: 500;
+            background: transparent;
+            outline: none !important;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            position: relative;
+            display: inline-block;
+            background-color: rgba(59, 59, 59, 0.995);
+            border-radius: 10px;
+        }
+
+        .btn-41 {
+            border: 3px solid rgb(255, 255, 255);
+            z-index: 1;
+            color: white;
+        }
+        .btn-41:after {
+            position: absolute;
+            content: "";
+            width: 0;
+            height: 100%;
+            top: 0;
+            left: 0;
+            direction: rtl;
+            z-index: -1;
+            background-image: linear-gradient(to right, #fc6076, #ff9a44, #ef9d43, #e75516);
+            box-shadow: 0 4px 15px 0 rgba(252, 104, 110, 0.75);
+            transition: all 0.3s ease;
+            border-radius: 10px;
+        }
+        .btn-41:hover {
+            color: rgb(0, 0, 0);
+        }
+        .btn-41:hover:after {
+            left: auto;
+            right: 0;
+            width: 100%;
+        }
+        .btn-41:active {
+            top: 2px;
+        }
     }
 }

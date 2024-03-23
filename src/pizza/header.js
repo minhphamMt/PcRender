@@ -15,13 +15,13 @@ class Header extends Component {
   componentDidMount() {
     this.setState({ activeLink: "/computer" });
   }
-  componentDidUpdate(preState, preProps) {
-    if (preProps.activeLink !== this.props.activeLink) {
-      this.setState({
-        activeLink: this.props.activeLink,
-      });
-    }
-  }
+  // componentDidUpdate(preState, preProps) {
+  //   if (preProps.activeLink !== this.props.activeLink) {
+  //     this.setState({
+  //       activeLink: this.props.activeLink,
+  //     });
+  //   }
+  // }
   handleResponse = () => {
     this.setState({
       boolean: !this.state.boolean,
@@ -29,15 +29,13 @@ class Header extends Component {
   };
 
   handleClick = (link) => {
+    this.props.handleSetLink(link);
     this.setState({
       boolean: false,
-      activeLink: link,
     });
   };
   handleActive = (link) => {
-    this.setState({
-      activeLink: link,
-    });
+    this.props.handleSetLink(link);
   };
   scrollToTop = () => {
     window.scrollTo({
@@ -63,11 +61,11 @@ class Header extends Component {
               <p className="avatar" onClick={() => this.scrollToTop()}></p>
               <p className="bell"></p>
               <p className="coin-item"></p>
-              {this.state.boolean === true && window.innerWidth <= 1300 && (
+              {this.state.boolean === true && window.innerWidth <= 1199 && (
                 <ul className="nav justify-content-center nav-345">
                   <li
                     className={
-                      this.state.activeLink === "/computer"
+                      this.props.activeLink === "/computer"
                         ? "nav-item active"
                         : "nav-item"
                     }
@@ -81,21 +79,21 @@ class Header extends Component {
                   </li>
                   <li
                     className={
-                      this.state.activeLink === "/nav"
+                      this.props.activeLink === "/bank"
                         ? "nav-item active"
                         : "nav-item"
                     }
                     onClick={() => {
-                      this.handleClick("/nav");
+                      this.handleClick("/bank");
                     }}
                   >
-                    <Link className="nav-link" to="/nav">
+                    <Link className="nav-link" to="/bank">
                       Nạp Tiền
                     </Link>
                   </li>
                   <li
                     className={
-                      this.state.activeLink === "#"
+                      this.props.activeLink === "#"
                         ? "nav-item active"
                         : "nav-item"
                     }
@@ -109,7 +107,7 @@ class Header extends Component {
                   </li>
                   <li
                     className={
-                      this.state.activeLink === "#"
+                      this.props.activeLink === "#"
                         ? "nav-item active"
                         : "nav-item"
                     }
@@ -123,7 +121,7 @@ class Header extends Component {
                   </li>
                   <li
                     className={
-                      this.state.activeLink === "/pcactive"
+                      this.props.activeLink === "/pcactive"
                         ? "nav-item active"
                         : "nav-item"
                     }
@@ -139,11 +137,11 @@ class Header extends Component {
                   <p className="coin-item"></p>
                 </ul>
               )}
-              {window.innerWidth > 1300 && (
-                <ul className="nav justify-content-center">
+              {window.innerWidth > 1199 && (
+                <ul className="nav justify-content-center nav-header-big">
                   <li
                     className={
-                      this.state.activeLink === "/computer"
+                      this.props.activeLink === "/computer"
                         ? "nav-item active"
                         : "nav-item"
                     }
@@ -157,21 +155,21 @@ class Header extends Component {
                   </li>
                   <li
                     className={
-                      this.state.activeLink === "/nav"
+                      this.props.activeLink === "/bank"
                         ? "nav-item active"
                         : "nav-item"
                     }
                     onClick={() => {
-                      this.handleActive("/nav");
+                      this.handleActive("/bank");
                     }}
                   >
-                    <Link className="nav-link" to="/nav">
+                    <Link className="nav-link" to="/bank">
                       Nạp Tiền
                     </Link>
                   </li>
                   <li
                     className={
-                      this.state.activeLink === "#"
+                      this.props.activeLink === "#"
                         ? "nav-item active"
                         : "nav-item"
                     }
@@ -185,7 +183,7 @@ class Header extends Component {
                   </li>
                   <li
                     className={
-                      this.state.activeLink === "#"
+                      this.props.activeLink === "#"
                         ? "nav-item active"
                         : "nav-item"
                     }
@@ -199,7 +197,7 @@ class Header extends Component {
                   </li>
                   <li
                     className={
-                      this.state.activeLink === "/pcactive"
+                      this.props.activeLink === "/pcactive"
                         ? "nav-item active"
                         : "nav-item"
                     }
