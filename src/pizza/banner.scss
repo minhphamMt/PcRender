@@ -131,8 +131,8 @@
         }
     }
 }
-@media screen and (min-width: 200px) and (max-width: 240px) {
+@media screen and (min-width: 200px) and (max-width: 340px) {
     input {
-        max-width: 200px;
+        min-width: 200px !important;
     }
 }

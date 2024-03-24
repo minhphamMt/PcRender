@@ -164,7 +164,24 @@ class Computer extends Component {
     let mesgl = this.state.mesgl;
     let { arr, arrGame, arrChorme, arrRenderAi, arrGiaLap01 } = this.state;
     const arraysToCheck = [active, mesAi, mesGame, meschorme, mesgl];
-
+    let check = [arr, arrGame, arrChorme, arrRenderAi, arrGiaLap01];
+    let filteredCheck = check.filter(
+      (item) => item !== false && (Array.isArray(item) ? item.length > 0 : true)
+    );
+    if (filteredCheck.length == 0) {
+      toast.warn("Vui lòng chọn Pc ", {
+        position: "top-center",
+        autoClose: 2000,
+        hideProgressBar: true,
+        closeOnClick: true,
+        pauseOnHover: false,
+        draggable: false,
+        progress: undefined,
+        theme: "colored",
+      });
+      return;
+    }
+    console.log(">>>check filter:", filteredCheck);
     for (let j = 0; j < arraysToCheck.length; j++) {
       const currentArray = arraysToCheck[j];
       const filteredArr = currentArray.filter(
@@ -201,7 +218,6 @@ class Computer extends Component {
           let arrCheck = this.props.arrCheck;
           let arrCheck1 = [arr, arrGame, arrChorme, arrRenderAi, arrGiaLap01];
           let isPcFull = false;
-
           for (let a = 0; a < arrCheck.length; a++) {
             let arrChild = arrCheck[a];
             let arrChild1 = arrCheck1[a];
