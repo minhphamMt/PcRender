@@ -164,11 +164,25 @@ class Computer extends Component {
     let mesgl = this.state.mesgl;
     let { arr, arrGame, arrChorme, arrRenderAi, arrGiaLap01 } = this.state;
     const arraysToCheck = [active, mesAi, mesGame, meschorme, mesgl];
+
     for (let j = 0; j < arraysToCheck.length; j++) {
       const currentArray = arraysToCheck[j];
       const filteredArr = currentArray.filter(
         (item) => item !== undefined && item !== false
       );
+      if (!this.state.name) {
+        toast.warn("Vui lòng nhập tên Pc bạn mong muốn ", {
+          position: "top-center",
+          autoClose: 2000,
+          hideProgressBar: true,
+          closeOnClick: true,
+          pauseOnHover: false,
+          draggable: false,
+          progress: undefined,
+          theme: "colored",
+        });
+        break;
+      }
       for (let i = 0; i < currentArray.length; i++) {
         if (currentArray[i] === "full") {
           toast.warn("Pc đã full vui lòng chọn Pc khác !", {
@@ -243,13 +257,26 @@ class Computer extends Component {
       <>
         <div className="header-form container  col-12">
           {" "}
-          <button
+          {/* <button
             className="btn btn-primary "
             onClick={() => {
               this.handleClick();
             }}
           >
             Tạo Pc
+          </button> */}
+          <button
+            alt="Tạo Pc"
+            onClick={() => {
+              this.handleClick();
+            }}
+          >
+            <i>T</i>
+            <i>ạ</i>
+            <i>o</i>
+            <i>&nbsp;</i>
+            <i>P</i>
+            <i>c</i>
           </button>
           <div className="form">
             {" "}

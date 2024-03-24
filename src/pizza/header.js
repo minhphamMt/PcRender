@@ -7,7 +7,7 @@ class Header extends Component {
     super(props);
     this.state = {
       coin: this.props.coin,
-      boolean: this.props.boolean,
+      boolean: false,
       arr: [],
       activeLink: this.props.activeLink,
     };
@@ -15,13 +15,13 @@ class Header extends Component {
   componentDidMount() {
     this.setState({ activeLink: "/computer" });
   }
-  // componentDidUpdate(preState, preProps) {
-  //   if (preProps.activeLink !== this.props.activeLink) {
-  //     this.setState({
-  //       activeLink: this.props.activeLink,
-  //     });
-  //   }
-  // }
+  componentDidUpdate(preState, preProps) {
+    if (preProps.coin !== this.props.coin) {
+      this.setState({
+        coin: this.props.coin,
+      });
+    }
+  }
   handleResponse = () => {
     this.setState({
       boolean: !this.state.boolean,
@@ -31,7 +31,7 @@ class Header extends Component {
   handleClick = (link) => {
     this.props.handleSetLink(link);
     this.setState({
-      boolean: false,
+      boolean: true,
     });
   };
   handleActive = (link) => {
@@ -43,7 +43,22 @@ class Header extends Component {
       behavior: "smooth",
     });
   };
+  // Hàm chuyển đổi số thành chuỗi rút gọn
+  shortenNumber = (num) => {
+    const suffixes = ["", "k", "m", "b", "t"];
+    const suffixNum = Math.floor(("" + num).length / 4);
+    let shortNum = parseFloat(
+      (suffixNum !== 0 ? num / Math.pow(1000, suffixNum) : num).toPrecision(2)
+    );
+    if (shortNum % 1 !== 0) {
+      shortNum = shortNum.toFixed(1);
+    }
+    return shortNum + suffixes[suffixNum];
+  };
+
   render() {
+    const { coin } = this.state;
+    const formattedCoin = this.shortenNumber(coin);
     return (
       <>
         <div className="container-fuild hhhhh">
@@ -60,9 +75,13 @@ class Header extends Component {
               ></p>
               <p className="avatar" onClick={() => this.scrollToTop()}></p>
               <p className="bell"></p>
-              <p className="coin-item"></p>
-              {this.state.boolean === true && window.innerWidth <= 1199 && (
-                <ul className="nav justify-content-center nav-345">
+              {/* <p className="coin-item"></p> */}
+              {window.innerWidth <= 1199 && (
+                <ul
+                  className={`nav justify-content-center nav-345 ${
+                    this.state.boolean === false ? "enable" : "visible"
+                  }`}
+                >
                   <li
                     className={
                       this.props.activeLink === "/computer"
@@ -133,7 +152,7 @@ class Header extends Component {
                       Pc đã tạo
                     </Link>
                   </li>
-                  <li className="it coin">{this.state.coin} VND</li>
+                  <li className="it coin">{formattedCoin} VND</li>
                   <p className="coin-item"></p>
                 </ul>
               )}
@@ -209,7 +228,7 @@ class Header extends Component {
                       Pc đã tạo
                     </Link>
                   </li>
-                  <li className="it coin">{this.state.coin} VND</li>
+                  <li className="it coin">{formattedCoin} VND</li>
                 </ul>
               )}
             </div>

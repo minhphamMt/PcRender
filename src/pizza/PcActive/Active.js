@@ -236,6 +236,7 @@ class Active extends Component {
                         data-bs-toggle="modal"
                         data-bs-target="#myModal"
                       ></button>
+
                       <span
                         className="delete"
                         onClick={() =>

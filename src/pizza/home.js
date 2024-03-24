@@ -17,7 +17,7 @@ class Home extends Component {
   constructor(props) {
     super(props);
     this.state = {
-      coin: "0",
+      coin: 0,
       index: 1,
       boolean: false,
       name: "",
@@ -28,6 +28,7 @@ class Home extends Component {
       arrGiaLap01: [],
       number: [],
       activeLink: "",
+      nameBank: "",
     };
   }
 
@@ -149,7 +150,24 @@ class Home extends Component {
       activeLink: link,
     });
   };
+  handleResponsive = () => {
+    this.setState({
+      boolean: !this.state.boolean,
+    });
+  };
+  handleSetName = (name) => {
+    this.setState({
+      nameBank: name,
+    });
+  };
+  handleChangeCoin = (coin) => {
+    this.setState({
+      coin: this.state.coin + +coin,
+      nameBank: "",
+    });
+  };
   render() {
+    console.log(">>>check coin :", this.state.coin);
     return (
       <>
         <ToastContainer
@@ -174,11 +192,17 @@ class Home extends Component {
               location={this.props.location}
               activeLink={this.state.activeLink}
               handleSetLink={this.handleSetLink}
+              handleResponsive={this.handleResponsive}
+              handleChangeCoin={this.handleChangeCoin}
             />
             <Switch>
               <Redirect exact from="/" to="/computer" />
               <Route path="/bank">
-                <HomePage />
+                <HomePage
+                  handleSetName={this.handleSetName}
+                  name={this.state.nameBank}
+                  handleChangeCoin={this.handleChangeCoin}
+                />
               </Route>
               <Route path="/computer">
                 <Computer

@@ -93,6 +93,7 @@
                 }
                 .coin {
                     color: rgba(74, 150, 243, 0.9);
+                    font-size: 18px !important;
                 }
             }
         }
@@ -105,6 +106,24 @@
     top: 0;
     left: 0;
 }
+@keyframes slideIn {
+    0% {
+        transform: translateX(0%);
+    }
+    100% {
+        transform: translateX(100%);
+    }
+}
+
+@keyframes slideOut {
+    0% {
+        transform: translateX(100%);
+    }
+    100% {
+        transform: translateX(0%);
+    }
+}
+
 @media screen and (max-width: 1119px) {
     .header {
         .left-content {
@@ -153,6 +172,15 @@
             align-items: none !important;
             margin-right: 0px !important;
             gap: 0 !important;
+
+            // /* Thiết lập transform origin */
+            // transform-origin: right;
+            &.visible {
+                animation: slideIn 0.3s ease forwards;
+            }
+            &.enable {
+                animation: slideOut 0.3s ease forwards;
+            }
             .nav-item {
                 display: inline;
                 min-height: 80px;
@@ -164,6 +192,9 @@
                     height: inherit;
                     font-size: 20px;
                 }
+            }
+            .coin {
+                font-size: 18px;
             }
             .it {
                 width: 100%;
@@ -188,6 +219,9 @@
         scale: 0.8;
         top: -45px;
         right: -50px !important;
+        .coin {
+            font-size: 18px;
+        }
     }
 }
 @media screen and (min-width: 1120px) and (max-width: 1300px) {
