@@ -13,6 +13,8 @@ import { ToastContainer } from "react-toastify";
 import HomePage from "./homePage";
 import Active from "./PcActive/Active";
 import { toast } from "react-toastify";
+import RentPc from "./historyRent/rentPc";
+import LogManage from "./logmanage/LogManage";
 class Home extends Component {
   constructor(props) {
     super(props);
@@ -29,10 +31,34 @@ class Home extends Component {
       number: [],
       activeLink: "",
       nameBank: "",
+      rent: [],
+      seconds: 0,
     };
   }
+  handleLogTime = () => {
+    setInterval(() => {
+      this.setState({
+        seconds: this.state.seconds + 1,
+      });
+    }, 1000);
+  };
+  componentDidUpdate(prevProps, prevState) {
+    // Kiểm tra nếu rent đã thay đổi
+    if (this.state.rent !== prevState.rent) {
+      // Xóa interval cũ nếu tồn tại
+      if (this.interval) {
+        clearInterval(this.interval);
+      }
+      // Tạo interval mới
+      this.interval = setInterval(() => {
+        this.setState({
+          seconds: this.state.seconds + 1,
+        });
+      }, 1000);
+    }
+  }
 
-  handleDelete = (index, cate, namedelete) => {
+  handleDelete = (index, cate, namedelete, type) => {
     let newState = { ...this.state };
     newState[cate][index] = "";
     newState["name"][namedelete] = "0";
@@ -55,18 +81,30 @@ class Home extends Component {
       newState["index"] = 1;
     }
     this.setState({ ...newState });
-    toast.success("Đã xóa thành công !", {
-      position: "top-center",
-      autoClose: 2000,
-      hideProgressBar: true,
-      closeOnClick: true,
-      pauseOnHover: true,
-      draggable: false,
-      progress: undefined,
-      theme: "colored",
-    });
+    if (type === "thue") {
+      toast.success("Đã thuê thành công !", {
+        position: "top-center",
+        autoClose: 2000,
+        hideProgressBar: true,
+        closeOnClick: true,
+        pauseOnHover: true,
+        draggable: false,
+        progress: undefined,
+        theme: "colored",
+      });
+    } else {
+      toast.success("Đã xóa thành công !", {
+        position: "top-center",
+        autoClose: 2000,
+        hideProgressBar: true,
+        closeOnClick: true,
+        pauseOnHover: true,
+        draggable: false,
+        progress: undefined,
+        theme: "colored",
+      });
+    }
   };
-
   handleOnchange = (name) => {
     let arr = [...this.state.name];
     arr.push(name);
@@ -166,10 +204,16 @@ class Home extends Component {
       nameBank: "",
     });
   };
+  rentPc = (obj) => {
+    let coppyRent = [...this.state.rent];
+    coppyRent.push(obj);
+    this.setState({
+      rent: [...coppyRent],
+    });
+  };
   render() {
-    console.log(">>>check coin :", this.state.coin);
     return (
-      <>
+      <div className="home-page">
         <ToastContainer
           className="toast-container"
           position="top-center"
@@ -183,6 +227,7 @@ class Home extends Component {
           pauseOnHover={true}
           theme="light"
           transition={Zoom}
+          closeButton={false}
         />
         <Router>
           <>
@@ -230,12 +275,24 @@ class Home extends Component {
                   number={this.state.number}
                   handleSetActive={this.handleSetActive}
                   handleDelete={this.handleDelete}
+                  rentPc={this.rentPc}
+                  coin={this.state.coin}
+                />
+              </Route>
+              <Route path="/rentPc">
+                <RentPc rent={this.state.rent}></RentPc>
+              </Route>
+              <Route path="/logPc">
+                <LogManage
+                  rent={this.state.rent}
+                  seconds={this.state.seconds}
+                  handleLogTime={this.handleLogTime}
                 />
               </Route>
             </Switch>
           </>
         </Router>
-      </>
+      </div>
     );
   }
 }

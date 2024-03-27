@@ -168,26 +168,25 @@ class HomePage extends Component {
             </div>
           </div>
           <div className="right-content">
-            <div class="container ">
-              <div class="left">
-                <form class="form">
-                  <div class="input-block">
+            <div className="container ">
+              <div className="left">
+                <form className="form">
+                  <div className="input-block">
                     <input
-                      class="input"
+                      className="input"
                       type="text"
                       id="email"
                       required=""
                       value={this.props.name}
                       disabled
                     />
-                    <label style={{ marginTop: "-30px" }} for="email">
+                    <label style={{ marginTop: "-30px" }} htmlFor="email">
                       Ngân Hàng Thanh Toán
                     </label>
                   </div>
-                  <div class="input-block">
+                  <div className="input-block">
                     <input
-                      class="input"
-                      inputmode="numeric"
+                      className="input"
                       type="number"
                       id="email"
                       required=""
@@ -197,12 +196,11 @@ class HomePage extends Component {
                         this.handleOnChange(event, "numberCard")
                       }
                     />
-                    <label for="email">Nhập Số Thẻ</label>
+                    <label htmlFor="email">Nhập Số Thẻ</label>
                   </div>
-                  <div class="input-block">
+                  <div className="input-block">
                     <input
-                      class="input"
-                      inputmode="numeric"
+                      className="input"
                       type="number"
                       id="email"
                       required=""
@@ -210,11 +208,11 @@ class HomePage extends Component {
                       value={this.state.money}
                       onChange={(event) => this.handleOnChange(event, "money")}
                     />
-                    <label for="email">Nhập Số Tiền</label>
+                    <label htmlFor="email">Nhập Số Tiền</label>
                   </div>
-                  <div class="input-block">
+                  <div className="input-block">
                     <input
-                      class="input"
+                      className="input"
                       type="text"
                       id="pass"
                       required=""
@@ -223,13 +221,13 @@ class HomePage extends Component {
                         this.handleOnChange(event, "numberCode")
                       }
                     />
-                    <label for="pass">Mã Xác Nhận</label>
+                    <label htmlFor="pass">Mã Xác Nhận</label>
                   </div>
                   <p className="Code-validate">
                     <span>{this.state.code}</span>
                   </p>
-                  <div class="input-block">
-                    <span class="forgot">
+                  <div className="input-block">
+                    <span className="forgot">
                       <a>
                         lưu ý: hãy nhập đúng tất cả thông tin đề phòng những sai
                         xót có thể xảy ra
@@ -241,8 +239,8 @@ class HomePage extends Component {
                   </div>
                 </form>
               </div>
-              <div class="right">
-                <div class="img">
+              <div className="right">
+                <div className="img">
                   <svg
                     xmlns="http://www.w3.org/2000/svg"
                     width="100%"

@@ -1,0 +1,41 @@
+.RentPc {
+    margin-top: 100px;
+    border-radius: 10px;
+    width: 95%;
+    background-color: transparent;
+    .table {
+        border: 1px solid gray;
+    }
+}
+@media only screen and (max-width: 766px) {
+    .table {
+        width: 100%;
+        border-collapse: collapse;
+    }
+    .table,
+    .table th,
+    .table td {
+        font-size: 0.8em;
+    }
+    .table th,
+    .table td {
+        word-wrap: break-word;
+        max-width: 120px;
+    }
+}
+@media only screen and (max-width: 370px) {
+    .table {
+        width: 100%;
+        border-collapse: collapse;
+    }
+    .table,
+    .table th,
+    .table td {
+        font-size: 0.7em;
+    }
+    .table th,
+    .table td {
+        word-wrap: break-word;
+        max-width: 120px;
+    }
+}

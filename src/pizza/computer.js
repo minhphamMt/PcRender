@@ -43,7 +43,6 @@ class Computer extends Component {
       ...[...arrcoppy, ...arrGame, ...arrChorme, ...arrRenderAi, ...arrGiaLap01]
     );
     const filteredArr = arrCheck1.filter((item) => item === true);
-    console.log(">>>Check arr:", arrCheck1);
     if (filteredArr.length > 1) {
       toast.info("Vui lòng chỉ chọn 1 Pc !", {
         position: "top-center",
@@ -181,7 +180,7 @@ class Computer extends Component {
       });
       return;
     }
-    console.log(">>>check filter:", filteredCheck);
+
     for (let j = 0; j < arraysToCheck.length; j++) {
       const currentArray = arraysToCheck[j];
       const filteredArr = currentArray.filter(
@@ -301,7 +300,7 @@ class Computer extends Component {
                 this.handleOnChangeName(event);
               }}
               type="text"
-              className="  form-control "
+              className="  form-control input-banner "
               id="email"
               placeholder="Nhập Tên Pc"
               name="email"

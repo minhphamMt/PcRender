@@ -1,4 +1,7 @@
 .container-fuild {
+    @import url("https://fonts.googleapis.com/css2?family=Noto+Sans+JP:wght@100&family=Mulish:wght@500&family=Open+Sans:wght@500&family=Unbounded:wght@500&display=swap");
+    font-weight: 540;
+
     .header {
         display: flex;
         width: 100vw;
@@ -88,7 +91,7 @@
                 }
                 .active {
                     .nav-link {
-                        color: blue;
+                        color: rgb(29, 115, 243);
                     }
                 }
                 .coin {

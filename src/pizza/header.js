@@ -45,15 +45,15 @@ class Header extends Component {
   };
   // Hàm chuyển đổi số thành chuỗi rút gọn
   shortenNumber = (num) => {
-    const suffixes = ["", "k", "m", "b", "t"];
-    const suffixNum = Math.floor(("" + num).length / 4);
-    let shortNum = parseFloat(
-      (suffixNum !== 0 ? num / Math.pow(1000, suffixNum) : num).toPrecision(2)
+    const hauto = ["", "k", "m", "b", "t"];
+    const tiensau = Math.floor(("" + num).length / 3);
+    let rutgon = parseFloat(
+      (tiensau !== 0 ? num / Math.pow(1000, tiensau) : num).toPrecision(2)
     );
-    if (shortNum % 1 !== 0) {
-      shortNum = shortNum.toFixed(1);
+    if (rutgon % 1 !== 0) {
+      rutgon = rutgon.toFixed(1);
     }
-    return shortNum + suffixes[suffixNum];
+    return rutgon + hauto[tiensau];
   };
 
   render() {
@@ -112,29 +112,29 @@ class Header extends Component {
                   </li>
                   <li
                     className={
-                      this.props.activeLink === "#"
+                      this.props.activeLink === "/rentPc"
                         ? "nav-item active"
                         : "nav-item"
                     }
                     onClick={() => {
-                      this.handleClick("#");
+                      this.handleClick("/rentPc");
                     }}
                   >
-                    <Link className="nav-link" to="#">
+                    <Link className="nav-link" to="/rentPc">
                       Quản Lý Đơn Hàng
                     </Link>
                   </li>
                   <li
                     className={
-                      this.props.activeLink === "#"
+                      this.props.activeLink === "/logPc"
                         ? "nav-item active"
                         : "nav-item"
                     }
                     onClick={() => {
-                      this.handleClick("#");
+                      this.handleClick("/logPc");
                     }}
                   >
-                    <Link className="nav-link" to="#">
+                    <Link className="nav-link" to="/logPc">
                       Quản Lý Log
                     </Link>
                   </li>
@@ -188,29 +188,29 @@ class Header extends Component {
                   </li>
                   <li
                     className={
-                      this.props.activeLink === "#"
+                      this.props.activeLink === "/rentPc"
                         ? "nav-item active"
                         : "nav-item"
                     }
                     onClick={() => {
-                      this.handleActive("#");
+                      this.handleActive("/rentPc");
                     }}
                   >
-                    <Link className="nav-link" to="#">
+                    <Link className="nav-link" to="/rentPc">
                       Quản Lý Đơn Hàng
                     </Link>
                   </li>
                   <li
                     className={
-                      this.props.activeLink === "#"
+                      this.props.activeLink === "/logPc"
                         ? "nav-item active"
                         : "nav-item"
                     }
                     onClick={() => {
-                      this.handleActive("#");
+                      this.handleActive("/logPc");
                     }}
                   >
-                    <Link className="nav-link" to="#">
+                    <Link className="nav-link" to="/logPc">
                       Quản Lý Log
                     </Link>
                   </li>

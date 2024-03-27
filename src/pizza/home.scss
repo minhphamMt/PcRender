@@ -1,7 +1,12 @@
-.container {
-    background-color: black;
-    .title {
-    }
+@import url("https://fonts.googleapis.com/css2?family=Noto+Sans+JP:wght@100&family=Mulish:wght@500&family=Open+Sans:wght@500&family=Unbounded:wght@500&display=swap");
+
+:root {
+    --primary-font: "Noto Sans", sans-serif;
+    --second-font: "Mulish", sans-serif;
+    --third-font: "Unbounded", sans-serif;
+}
+.home-page {
+    font-family: sans-serif;
 }
 .toast-container {
     z-index: 100000000000000000000000000000 !important;
