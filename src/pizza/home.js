@@ -32,7 +32,7 @@ class Home extends Component {
       activeLink: "",
       nameBank: "",
       rent: [],
-      seconds: 0,
+      seconds: [],
     };
   }
   handleLogTime = () => {
@@ -43,18 +43,27 @@ class Home extends Component {
     }, 1000);
   };
   componentDidUpdate(prevProps, prevState) {
-    // Kiểm tra nếu rent đã thay đổi
     if (this.state.rent !== prevState.rent) {
-      // Xóa interval cũ nếu tồn tại
-      if (this.interval) {
-        clearInterval(this.interval);
-      }
-      // Tạo interval mới
-      this.interval = setInterval(() => {
-        this.setState({
-          seconds: this.state.seconds + 1,
-        });
-      }, 1000);
+      this.state.rent.map((item, index) => {
+        if (this.interval) {
+          clearInterval(this.interval);
+        }
+        let coppyseconnd = [...this.state.seconds];
+        this.interval = setInterval(() => {
+          if (!coppyseconnd[item.id]) {
+            coppyseconnd[item.id] = 0;
+            coppyseconnd[item.id] = coppyseconnd[item.id] + 1;
+            this.setState({
+              seconds: [...coppyseconnd],
+            });
+          } else {
+            coppyseconnd[item.id] = coppyseconnd[item.id] + 1;
+            this.setState({
+              seconds: [...coppyseconnd],
+            });
+          }
+        }, 1000);
+      });
     }
   }
 

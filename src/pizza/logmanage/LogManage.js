@@ -24,9 +24,10 @@ class LogManage extends React.Component {
   };
   render() {
     let rentPc = this.props.rent;
+    console.log("....check", this.props.seconds);
     return (
       <div className="container RentPc">
-        <table className="table table-hover ">
+        <table className="table table-hover">
           <thead className="table-primary">
             <tr>
               <th>Số máy</th>
@@ -44,7 +45,7 @@ class LogManage extends React.Component {
                   <td>{item.id}</td>
                   <td>{item.date}</td>
                   <td>{item.time}</td>
-                  <td>{this.formatTime(this.props.seconds)}</td>
+                  <td>{this.formatTime(this.props.seconds[item.id])}</td>
                 </tr>
               ))
             ) : (

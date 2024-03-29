@@ -19,7 +19,6 @@
         .bank {
             width: 90%;
             height: 90%;
-            // box-shadow: 0px 5px 15px rgba(0, 0, 0, 0.25);
             margin: 0 auto;
             margin-top: 20px;
             .choose-bank {
@@ -213,6 +212,9 @@
             color: #425981;
             font-weight: 500;
             font-size: 1.1em;
+        }
+        input {
+            margin-top: 20px !important;
         }
         .Code-validate {
             display: flex;
