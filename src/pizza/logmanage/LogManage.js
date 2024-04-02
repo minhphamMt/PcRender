@@ -57,7 +57,7 @@ class LogManage extends React.Component {
                     fontSize: "17px",
                   }}
                 >
-                  Hiện chưa có Pc nào được thuê hãy tạo và thuê Pc của bạn nào
+                  Hiện chưa có PC nào được thuê hãy tạo và thuê PC của bạn nào
                 </td>
               </tr>
             )}

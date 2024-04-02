@@ -71,6 +71,15 @@ class HomePage extends Component {
         theme: "colored",
       });
     } else {
+      let obj = {
+        money: this.state.money,
+        Content: "Nạp tiền RenderPC",
+        bank: "",
+        STK: this.state.numberCard,
+        time: "",
+        status: "Hoàn Thành",
+      };
+      this.props.historyBank(obj);
       this.props.handleChangeCoin(money);
       toast.success("Nạp Tiền Thành Công ", {
         position: "top-center",

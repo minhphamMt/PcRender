@@ -1,39 +1,39 @@
 import React from "react";
-import "./rentPc.scss";
-class RentPc extends React.Component {
+import "./historybank.scss";
+class HistoryBank extends React.Component {
   constructor(props) {
     super(props);
     this.state = {};
   }
 
   render() {
-    let rentPc = this.props.rent;
+    let historyBank = this.props.historyBank;
     return (
       <div className="container RentPc">
-        <div className="box-rent " key={rentPc.id}>
+        <div className="box-rent ">
           <table className="table table-hover ">
             <thead className="table-primary">
               <tr>
-                <th>ID</th>
-                <th>Số máy</th>
-                <th>Tên PC</th>
-                <th>Thời gian thuê</th>
-                <th>Số tiền thuê</th>
-                <th>Dòng máy</th>
-                <th>Ngày thuê</th>
+                <th>STT</th>
+                <th>Thời Gian Nạp</th>
+                <th>Nội Dung</th>
+                <th>Ngân Hàng</th>
+                <th>STK</th>
+                <th>Số Tiền</th>
+                <th>Trạng thái</th>
               </tr>
             </thead>
             <tbody>
-              {rentPc && rentPc.length > 0 ? (
-                rentPc.map((item, index) => (
+              {historyBank && historyBank.length > 0 ? (
+                historyBank.map((item, index) => (
                   <tr key={index}>
-                    <td>{item.id}</td>
                     <td>{index + 1}</td>
-                    <td>{item.name}</td>
                     <td>{item.time}</td>
+                    <td>{item.Content}</td>
+                    <td>{item.bank}</td>
+                    <td>{item.STK}</td>
                     <td>{item.money}</td>
-                    <td>{item.namePc}</td>
-                    <td>{item.date}</td>
+                    <td>{item.status}</td>
                   </tr>
                 ))
               ) : (
@@ -45,7 +45,7 @@ class RentPc extends React.Component {
                       fontSize: "17px",
                     }}
                   >
-                    Hiện chưa có PC nào được thuê hãy tạo và thuê PC của bạn nào
+                    Bạn chưa thực hiện lần nạp tiền nào
                   </td>
                 </tr>
               )}
@@ -57,4 +57,4 @@ class RentPc extends React.Component {
   }
 }
 
-export default RentPc;
+export default HistoryBank;

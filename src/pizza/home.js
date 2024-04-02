@@ -15,6 +15,8 @@ import Active from "./PcActive/Active";
 import { toast } from "react-toastify";
 import RentPc from "./historyRent/rentPc";
 import LogManage from "./logmanage/LogManage";
+import Footer from "./footer/footer";
+import HistoryBank from "./historybank/historybank";
 class Home extends Component {
   constructor(props) {
     super(props);
@@ -33,35 +35,28 @@ class Home extends Component {
       nameBank: "",
       rent: [],
       seconds: [],
+      interval: [],
+      historyBank: [],
     };
   }
-  handleLogTime = () => {
-    setInterval(() => {
-      this.setState({
-        seconds: this.state.seconds + 1,
-      });
-    }, 1000);
-  };
   componentDidUpdate(prevProps, prevState) {
     if (this.state.rent !== prevState.rent) {
-      this.state.rent.map((item, index) => {
-        if (this.interval) {
-          clearInterval(this.interval);
+      let interval = [...this.state.interval];
+      let coppyseconnd = [...this.state.seconds];
+
+      this.state.rent.forEach((item, index) => {
+        if (interval[item.id]) {
+          clearInterval(interval[item.id]);
         }
-        let coppyseconnd = [...this.state.seconds];
-        this.interval = setInterval(() => {
-          if (!coppyseconnd[item.id]) {
-            coppyseconnd[item.id] = 0;
-            coppyseconnd[item.id] = coppyseconnd[item.id] + 1;
-            this.setState({
-              seconds: [...coppyseconnd],
-            });
-          } else {
-            coppyseconnd[item.id] = coppyseconnd[item.id] + 1;
-            this.setState({
-              seconds: [...coppyseconnd],
-            });
-          }
+
+        coppyseconnd[item.id] = coppyseconnd[item.id] || 0;
+
+        interval[item.id] = setInterval(() => {
+          coppyseconnd[item.id]++;
+          this.setState({
+            seconds: [...coppyseconnd],
+            interval: [...interval],
+          });
         }, 1000);
       });
     }
@@ -220,6 +215,21 @@ class Home extends Component {
       rent: [...coppyRent],
     });
   };
+  historyBank = (obj) => {
+    let historyBank = [...this.state.historyBank];
+    let date = new Date();
+    let day = date.getDate();
+    let month = date.getMonth() + 1;
+    let year = date.getFullYear();
+    let hours = date.getHours();
+    let minute = date.getMinutes();
+    obj.time = `${hours}:${minute} ${day}/${month}/${year}`;
+    obj.bank = this.state.nameBank;
+    historyBank.push(obj);
+    this.setState({
+      historyBank: [...historyBank],
+    });
+  };
   render() {
     return (
       <div className="home-page">
@@ -256,6 +266,7 @@ class Home extends Component {
                   handleSetName={this.handleSetName}
                   name={this.state.nameBank}
                   handleChangeCoin={this.handleChangeCoin}
+                  historyBank={this.historyBank}
                 />
               </Route>
               <Route path="/computer">
@@ -297,6 +308,9 @@ class Home extends Component {
                   seconds={this.state.seconds}
                   handleLogTime={this.handleLogTime}
                 />
+              </Route>
+              <Route path="/history-bank">
+                <HistoryBank historyBank={this.state.historyBank} />
               </Route>
             </Switch>
           </>

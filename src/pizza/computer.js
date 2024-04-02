@@ -302,7 +302,7 @@ class Computer extends Component {
               type="text"
               className="  form-control input-banner "
               id="email"
-              placeholder="Nhập Tên Pc"
+              placeholder="Nhập Tên PC"
               name="email"
             />
           </div>

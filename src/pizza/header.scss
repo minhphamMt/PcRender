@@ -1,5 +1,4 @@
 .container-fuild {
-    @import url("https://fonts.googleapis.com/css2?family=Noto+Sans+JP:wght@100&family=Mulish:wght@500&family=Open+Sans:wght@500&family=Unbounded:wght@500&display=swap");
     font-weight: 540;
 
     .header {
@@ -15,7 +14,7 @@
                 margin-left: 50px;
                 width: 20%;
                 height: 50px;
-                background-image: url("./srcimg/logo.png");
+                background-image: url("./srcimg/logol.png");
                 background-size: contain;
                 background-repeat: no-repeat;
                 background-position: center;
@@ -29,31 +28,35 @@
             margin-left: 0px;
             .avatar {
                 position: absolute;
+                top: -1px;
                 right: 50px;
-                width: 40px;
-                height: 40px;
-                background-image: url("./srcimg/home.png");
+                width: 48px;
+                height: 48px;
+                background-image: url("./srcimg/arrow-up.png");
                 background-repeat: no-repeat;
                 background-size: contain;
                 background-position: center;
                 margin-top: 15px;
                 z-index: 2;
                 &:hover {
-                    background-image: url("./srcimg/home\ \(1\).png");
                     cursor: pointer;
                 }
             }
             .bell {
                 position: absolute;
+                cursor: pointer;
                 width: 35px;
                 height: 35px;
-                background-image: url("./srcimg/bell\ \(2\).png");
+                background-image: url("./srcimg/bank-account.png");
                 background-repeat: no-repeat;
                 background-size: contain;
                 background-position: center;
                 margin-top: 22px;
                 z-index: 2;
-                right: 100px;
+                right: 120px;
+                &:hover {
+                    background-image: url("./srcimg/bank-account\ \(2\).png");
+                }
             }
             .coin-item {
                 position: absolute;
@@ -70,6 +73,7 @@
             }
             .respon {
                 position: absolute;
+                display: none;
             }
             .nav {
                 height: inherit;
@@ -87,16 +91,18 @@
                     .nav-link {
                         color: black;
                         margin-top: 18px;
+                        height: 90%;
                     }
                 }
                 .active {
                     .nav-link {
-                        color: rgb(29, 115, 243);
+                        color: #525ceb;
                     }
                 }
                 .coin {
-                    color: rgba(74, 150, 243, 0.9);
+                    color: #525ceb;
                     font-size: 18px !important;
+                    margin-left: 10px;
                 }
             }
         }
@@ -106,7 +112,7 @@
     position: fixed;
     z-index: 1000000;
     background-color: white;
-    top: 0;
+    top: -1px;
     left: 0;
 }
 @keyframes slideIn {
@@ -138,26 +144,88 @@
         }
         .right-content {
             .respon {
+                display: inline-block !important;
                 width: 50px;
                 height: 50px;
-                background-image: url("./srcimg/list.png");
                 background-size: contain;
                 background-repeat: no-repeat;
                 position: absolute;
                 right: 10px;
-                top: 15px;
+                top: 20px;
+                #checkbox {
+                    display: none;
+                }
+
+                .toggle {
+                    position: relative;
+                    width: 40px;
+                    cursor: pointer;
+                    margin: auto;
+                    display: block;
+                    height: calc(4px * 3 + 11px * 2);
+                }
+                .bar {
+                    position: absolute;
+                    left: 0;
+                    right: 0;
+                    height: 4px;
+                    border-radius: calc(4px / 2);
+                    background: #0d0c0f;
+                    color: inherit;
+                    opacity: 1;
+                    transition: none 0.35s cubic-bezier(0.5, -0.35, 0.35, 1.5) 0s;
+                }
+
+                /***** Spin Animation *****/
+
+                .bar--top {
+                    bottom: calc(50% + 11px + 4px / 2);
+                    transition-property: bottom, transform;
+                    transition-delay: calc(0s + 0.2s), 0s;
+                }
+
+                .bar--middle {
+                    top: calc(50% - 4px / 2);
+                    transition-property: opacity;
+                    transition-delay: calc(0s + 0.2s);
+                }
+
+                .bar--bottom {
+                    top: calc(50% + 11px + 4px / 2);
+                    transition-property: top, transform;
+                    transition-delay: calc(0s + 0.2s), 0s;
+                }
+
+                #checkbox:checked + .toggle .bar--top {
+                    bottom: calc(50% - 4px / 2);
+                    transform: rotate(135deg);
+                    transition-delay: 0s, calc(0s + 0.2s);
+                }
+
+                #checkbox:checked + .toggle .bar--middle {
+                    opacity: 0;
+                    transition-duration: 0s;
+                    transition-delay: calc(0s + 0.2s);
+                }
+
+                #checkbox:checked + .toggle .bar--bottom {
+                    top: calc(50% - 4px / 2);
+                    transform: rotate(225deg);
+                    transition-delay: 0s, calc(0s + 0.2s);
+                }
             }
             .avatar {
                 position: absolute;
-                margin-right: 45px;
+                margin-right: 30px;
                 top: 3px;
                 &:hover {
-                    background-image: url("./srcimg/home.png");
+                    cursor: pointer;
                 }
             }
             .bell {
-                margin-right: 0px;
-                display: none;
+                margin-right: 30px;
+                top: -3px;
+                scale: 1.1;
             }
             .coin-item {
                 display: none;
@@ -179,10 +247,10 @@
             // /* Thiết lập transform origin */
             // transform-origin: right;
             &.visible {
-                animation: slideIn 0.3s ease forwards;
+                animation: slideIn 0.5s ease forwards;
             }
             &.enable {
-                animation: slideOut 0.3s ease forwards;
+                animation: slideOut 0.5s ease forwards;
             }
             .nav-item {
                 display: inline;
@@ -240,8 +308,14 @@
         .avatar {
             display: none;
         }
+        .respon {
+            display: none;
+        }
         .nav-header-big {
             margin-right: 20% !important;
+        }
+        .nav {
+            gap: 10px !important;
         }
     }
 }

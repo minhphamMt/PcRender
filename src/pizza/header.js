@@ -67,14 +67,42 @@ class Header extends Component {
               <div className="logo"></div>
             </div>
             <div className="right-content">
-              <p
+              <div
                 className="respon"
-                onClick={() => {
-                  this.handleResponse();
-                }}
-              ></p>
+                // onClick={() => {
+                //   this.handleResponse();
+                // }}
+              >
+                <input
+                  type="checkbox"
+                  id="checkbox"
+                  checked={!this.state.boolean}
+                />
+                <label
+                  for="checkbox"
+                  className="toggle"
+                  onClick={() => {
+                    this.handleResponse();
+                  }}
+                >
+                  <div className="bar bar--top"></div>
+                  <div className="bar bar--middle"></div>
+                  <div className="bar bar--bottom"></div>
+                </label>
+              </div>
               <p className="avatar" onClick={() => this.scrollToTop()}></p>
-              <p className="bell"></p>
+              <div
+                className="bell"
+                onClick={() => {
+                  this.handleClick("/history-bank");
+                }}
+              >
+                <Link
+                  className="nav-link"
+                  to="/history-bank"
+                  style={{ width: "inherit", height: "inherit" }}
+                ></Link>
+              </div>
               {/* <p className="coin-item"></p> */}
               {window.innerWidth <= 1199 && (
                 <ul
@@ -149,7 +177,7 @@ class Header extends Component {
                     }}
                   >
                     <Link className="nav-link" to="/pcactive">
-                      Pc đã tạo
+                      PC đã tạo
                     </Link>
                   </li>
                   <li className="it coin">{formattedCoin} VND</li>
@@ -225,7 +253,7 @@ class Header extends Component {
                     }}
                   >
                     <Link className="nav-link" to="/pcactive">
-                      Pc đã tạo
+                      PC đã tạo
                     </Link>
                   </li>
                   <li className="it coin">{formattedCoin} VND</li>
