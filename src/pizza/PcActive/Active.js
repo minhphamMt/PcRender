@@ -16,6 +16,7 @@ class Active extends Component {
       number: this.props.number,
       select: "",
       coin: "",
+      coinPlus: 0,
       coinSs: "",
       time: "",
       obj: {
@@ -124,6 +125,13 @@ class Active extends Component {
       return;
     } else {
       this.props.rentPc(obj);
+      console.log(
+        ">>>>check coin:",
+        this.props.coin,
+        ">>>coinss:",
+        this.state.coinSs
+      );
+      this.props.handleChangeCoin("less", --this.state.coinSs);
       setTimeout(() => {
         this.props.handleDelete(index, cate, namedelete, "thue");
       }, 500);

@@ -32,7 +32,7 @@ class Home extends Component {
       arrGiaLap01: [],
       number: [],
       activeLink: "",
-      nameBank: "",
+      nameBank: " ",
       rent: [],
       seconds: [],
       interval: [],
@@ -202,10 +202,16 @@ class Home extends Component {
       nameBank: name,
     });
   };
-  handleChangeCoin = (coin) => {
+  handleChangeCoin = (type, coin) => {
+    let money = 0;
+    if (type === "bank") {
+      money = +this.state.coin + coin;
+    } else {
+      money = +this.state.coin - coin;
+    }
     this.setState({
-      coin: this.state.coin + +coin,
-      nameBank: "",
+      coin: money,
+      nameBank: " ",
     });
   };
   rentPc = (obj) => {
@@ -267,6 +273,7 @@ class Home extends Component {
                   name={this.state.nameBank}
                   handleChangeCoin={this.handleChangeCoin}
                   historyBank={this.historyBank}
+                  coinBig={this.state.coin}
                 />
               </Route>
               <Route path="/computer">
@@ -297,6 +304,7 @@ class Home extends Component {
                   handleDelete={this.handleDelete}
                   rentPc={this.rentPc}
                   coin={this.state.coin}
+                  handleChangeCoin={this.handleChangeCoin}
                 />
               </Route>
               <Route path="/rentPc">

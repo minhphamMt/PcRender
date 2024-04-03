@@ -38,6 +38,10 @@ class HomePage extends Component {
   handleChooseBank = (bank) => {
     this.props.handleSetName(bank);
   };
+  handleSelected = (event) => {
+    let name = event.target.value;
+    this.props.handleSetName(name);
+  };
   handleOnChange = (event, id) => {
     let coppyState = { ...this.state };
     coppyState[id] = event.target.value;
@@ -80,7 +84,7 @@ class HomePage extends Component {
         status: "Hoàn Thành",
       };
       this.props.historyBank(obj);
-      this.props.handleChangeCoin(money);
+      this.props.handleChangeCoin("bank", +money);
       toast.success("Nạp Tiền Thành Công ", {
         position: "top-center",
         autoClose: 2000,
@@ -181,15 +185,30 @@ class HomePage extends Component {
               <div className="left">
                 <form className="form">
                   <div className="input-block">
-                    <input
+                    {/* <input
                       className="input"
                       type="text"
                       id="email"
                       required=""
                       value={this.props.name}
-                      disabled
-                    />
-                    <label style={{ marginTop: "-30px" }} htmlFor="email">
+                    /> */}
+                    <select
+                      className="input"
+                      id="email"
+                      onChange={(event) => this.handleSelected(event)}
+                      value={this.props.name}
+                    >
+                      <option value=" " disabled selected></option>
+                      <option value="Mb Bank">Mb Bank</option>
+                      <option value="Agribank">Agribank</option>
+                      <option value="BIDV">BIDV</option>
+                      <option value="Tp Bank">Tp Bank</option>
+                      <option value="VietTin Bank">VietTin Bank</option>
+                      <option value="VietCom Bank">VietCom Bank</option>
+                      <option value="Vp Bank">Vp Bank</option>
+                      <option value="ACB">ACB</option>
+                    </select>
+                    <label style={{ marginTop: "0px" }} htmlFor="email">
                       Ngân Hàng Thanh Toán
                     </label>
                   </div>
