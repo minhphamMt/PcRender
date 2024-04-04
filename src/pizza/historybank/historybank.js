@@ -33,7 +33,9 @@ class HistoryBank extends React.Component {
                     <td>{item.bank}</td>
                     <td>{item.STK}</td>
                     <td>{item.money}</td>
-                    <td>{item.status}</td>
+                    <td style={{ color: "green", fontWeight: "600" }}>
+                      {item.status}
+                    </td>
                   </tr>
                 ))
               ) : (

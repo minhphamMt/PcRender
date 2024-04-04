@@ -8,6 +8,7 @@
         display: flex;
         align-items: center;
         justify-content: center;
+        font-family: sans-serif;
         height: 50px;
         position: relative;
         padding: 0 20px;
@@ -53,6 +54,7 @@
             font-weight: bold;
             letter-spacing: 4px;
             font-style: normal;
+            font-family: sans-serif;
             transition: all 2s ease;
             transform: translateY(-20px);
             opacity: 0;
@@ -111,7 +113,7 @@
             max-width: 400px;
 
             margin-left: -130px;
-            border: 1px solid #3399fe;
+            border: 1px solid #5660f5;
         }
     }
 }
