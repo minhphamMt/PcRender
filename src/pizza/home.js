@@ -24,7 +24,7 @@ class Home extends Component {
       coin: 0,
       index: 1,
       boolean: false,
-      name: "",
+      name: [],
       arr: [],
       arrGame: [],
       arrChorme: [],

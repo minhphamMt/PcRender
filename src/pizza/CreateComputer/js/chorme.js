@@ -32,12 +32,9 @@ class Chorme extends Component {
               }}
             >
               <div className="header">
-                <div className="img"></div>
+                <p>Chorme 1</p>
               </div>
-              <h4 style={{ textTransform: "capitalize", marginTop: "20px" }}>
-                {" "}
-                PC Chorme
-              </h4>
+              <h4 style={{ textTransform: "capitalize" }}> PC Chorme</h4>
               <h5 style={{ color: "red" }}>Server full</h5>
               <p>
                 8.000 <span>VNĐ/hour</span>

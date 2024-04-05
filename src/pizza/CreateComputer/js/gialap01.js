@@ -24,17 +24,21 @@ class GiaLap01 extends Component {
     return (
       <>
         <div className="container">
-          <div className="child">
+          <div className="child ">
             <div
-              className={this.props.arr[1] === true ? "item active" : "item"}
+              className={
+                this.props.arr[1] === true
+                  ? "item box-gl01 active"
+                  : "item box-gl01"
+              }
               onClick={() => {
                 this.handleActive("ready", "1");
               }}
             >
               <div className="header">
-                <div className="img"></div>
+                <p>Giả Lập 01 - 1</p>
               </div>
-              <h4 style={{ textTransform: "capitalize", marginTop: "20px" }}>
+              <h4 style={{ textTransform: "capitalize" }}>
                 {" "}
                 Dual Xeon E5 2686V4 (36 nhân 72 luồng ){" "}
               </h4>
@@ -79,15 +83,19 @@ class GiaLap01 extends Component {
               <div className="tag"></div>
             </div>
             <div
-              className={this.props.arr[2] === true ? "item active" : "item"}
+              className={
+                this.props.arr[2] === true
+                  ? "item box-gl01 active"
+                  : "item box-gl01"
+              }
               onClick={() => {
                 this.handleActive("full", "2");
               }}
             >
               <div className="header">
-                <div className="img"></div>
+                <p>Giả Lập 01 - 2</p>
               </div>
-              <h4 style={{ textTransform: "capitalize", marginTop: "20px" }}>
+              <h4 style={{ textTransform: "capitalize" }}>
                 Dual Xeon E5 2680V4 + 1080Ti
               </h4>
               <h5 style={{ color: "red" }}>Server Full</h5>
@@ -131,15 +139,19 @@ class GiaLap01 extends Component {
               <div className="tag"></div>
             </div>
             <div
-              className={this.props.arr[3] === true ? "item active" : "item"}
+              className={
+                this.props.arr[3] === true
+                  ? "item box-gl01 active"
+                  : "item box-gl01"
+              }
               onClick={() => {
                 this.handleActive("ready", "3");
               }}
             >
               <div className="header">
-                <div className="img"></div>
+                <p>Giả Lập 01 - 3</p>
               </div>
-              <h4 style={{ textTransform: "capitalize", marginTop: "20px" }}>
+              <h4 style={{ textTransform: "capitalize" }}>
                 Dual Xeon E5 2680V4 + 3060Ti
               </h4>
               <h5 style={{ color: "green" }}>Server Ready</h5>

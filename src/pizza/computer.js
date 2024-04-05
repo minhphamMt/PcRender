@@ -309,7 +309,7 @@ class Computer extends Component {
         </div>
         <Router>
           <>
-            <RouterPc />
+            <RouterPc className="router-box" />
             <Switch>
               <Redirect exact from="/computer" to="/gialap" />
               <Route path="/gialap">

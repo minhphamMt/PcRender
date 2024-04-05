@@ -35,9 +35,9 @@ class GiaLap extends Component {
               }}
             >
               <div className="header">
-                <div className="img"></div>
+                <p>Giả Lập 1</p>
               </div>
-              <h4 style={{ textTransform: "capitalize", marginTop: "20px" }}>
+              <h4 style={{ textTransform: "capitalize" }}>
                 {" "}
                 dual xeon E5 2680v4 + vga 1080
               </h4>
@@ -90,9 +90,9 @@ class GiaLap extends Component {
               }}
             >
               <div className="header">
-                <div className="img"></div>
+                <p>Giả Lập 2</p>
               </div>
-              <h4 style={{ textTransform: "capitalize", marginTop: "20px" }}>
+              <h4 style={{ textTransform: "capitalize" }}>
                 {" "}
                 Dual Xeon E5 2680V4 + VGA 3060 12GB
               </h4>
@@ -144,9 +144,9 @@ class GiaLap extends Component {
               }}
             >
               <div className="header">
-                <div className="img"></div>
+                <p>Giả Lập 3</p>
               </div>
-              <h4 style={{ textTransform: "capitalize", marginTop: "20px" }}>
+              <h4 style={{ textTransform: "capitalize" }}>
                 {" "}
                 Dual Xeon 2696V4 (44 Nhân - 88 Luồng)
               </h4>
@@ -197,9 +197,9 @@ class GiaLap extends Component {
               }}
             >
               <div className="header">
-                <div className="img"></div>
+                <p>Giả Lập 4</p>
               </div>
-              <h4 style={{ textTransform: "capitalize", marginTop: "20px" }}>
+              <h4 style={{ textTransform: "capitalize" }}>
                 {" "}
                 Dual Xeon 2680V4 + VGA 1070
               </h4>

@@ -102,7 +102,9 @@
             transition-delay: calc(0.045s * 10);
         }
     }
-
+    .router-box {
+        margin-left: 200px;
+    }
     .form {
         position: relative;
         margin-left: 150px;
@@ -133,8 +135,11 @@
         }
     }
 }
-@media screen and (min-width: 200px) and (max-width: 365px) {
+@media screen and (min-width: 200px) and (max-width: 430px) {
     .input-banner {
-        min-width: 200px !important;
+        position: absolute;
+        left: -135px;
+        top: 50px;
+        width: 90vw;
     }
 }

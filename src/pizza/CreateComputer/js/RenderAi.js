@@ -26,15 +26,19 @@ class RenderAi extends Component {
         <div className="container">
           <div className="child">
             <div
-              className={this.props.arr[1] === true ? "item active" : "item"}
+              className={
+                this.props.arr[1] === true
+                  ? "item box-gl01 active"
+                  : "item box-gl01"
+              }
               onClick={() => {
                 this.handleActive("ready", "1");
               }}
             >
               <div className="header">
-                <div className="img"></div>
+                <p>RenderAi 1</p>
               </div>
-              <h4 style={{ textTransform: "capitalize", marginTop: "20px" }}>
+              <h4 style={{ textTransform: "capitalize" }}>
                 {" "}
                 Core i7 12700 + VGA 3080 10GB
               </h4>
@@ -78,15 +82,19 @@ class RenderAi extends Component {
               <div className="tag"></div>
             </div>
             <div
-              className={this.props.arr[2] === true ? "item active" : "item"}
+              className={
+                this.props.arr[2] === true
+                  ? "item box-gl01 active"
+                  : "item box-gl01"
+              }
               onClick={() => {
                 this.handleActive("full", "2");
               }}
             >
               <div className="header">
-                <div className="img"></div>
+                <p>RenderAi 2</p>
               </div>
-              <h4 style={{ textTransform: "capitalize", marginTop: "20px" }}>
+              <h4 style={{ textTransform: "capitalize" }}>
                 {" "}
                 Core i5 13600K + VGA 3080Ti 12GB
               </h4>
@@ -130,15 +138,19 @@ class RenderAi extends Component {
               <div className="tag"></div>
             </div>
             <div
-              className={this.props.arr[3] === true ? "item active" : "item"}
+              className={
+                this.props.arr[3] === true
+                  ? "item box-gl01 active"
+                  : "item box-gl01"
+              }
               onClick={() => {
                 this.handleActive("full", "3");
               }}
             >
               <div className="header">
-                <div className="img"></div>
+                <p>RenderAi 3</p>
               </div>
-              <h4 style={{ textTransform: "capitalize", marginTop: "20px" }}>
+              <h4 style={{ textTransform: "capitalize" }}>
                 {" "}
                 Core i7 12700 + VGA 4080 16GB
               </h4>

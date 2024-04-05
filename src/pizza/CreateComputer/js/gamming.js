@@ -37,12 +37,9 @@ class Gamming extends Component {
               }}
             >
               <div className="header">
-                <div className="img"></div>
+                <p>Gamming 1</p>
               </div>
-              <h4 style={{ textTransform: "capitalize", marginTop: "20px" }}>
-                {" "}
-                PC GAMING 3060Ti
-              </h4>
+              <h4 style={{ textTransform: "capitalize" }}> PC GAMING 3060Ti</h4>
               <h5 style={{ color: "green" }}>Server Ready</h5>
               <p>
                 10.000 <span>VNĐ/hour</span>
@@ -90,12 +87,9 @@ class Gamming extends Component {
               }}
             >
               <div className="header">
-                <div className="img"></div>
+                <p>Gamming 2</p>
               </div>
-              <h4 style={{ textTransform: "capitalize", marginTop: "20px" }}>
-                {" "}
-                PC GAMING 1660S
-              </h4>
+              <h4 style={{ textTransform: "capitalize" }}> PC GAMING 1660S</h4>
               <h5 style={{ color: "green" }}>Server Ready</h5>
               <p>
                 7.000 <span>VNĐ/hour</span>
@@ -143,9 +137,9 @@ class Gamming extends Component {
               }}
             >
               <div className="header">
-                <div className="img"></div>
+                <p>Gamming 3</p>
               </div>
-              <h4 style={{ textTransform: "capitalize", marginTop: "20px" }}>
+              <h4 style={{ textTransform: "capitalize" }}>
                 {" "}
                 PC GAMING 2060 Super
               </h4>

@@ -148,15 +148,23 @@ class Active extends Component {
       namedelete: namedelete,
     });
   };
+  filterArray = (name) => {
+    let filteredArray = name.filter(
+      (element) => element !== "" && element !== "0"
+    );
+    return filteredArray;
+  };
   render() {
     let { name, arr, arrGame, arrChorme, arrRenderAi, arrGiaLap01 } =
       this.state;
     let number = [...this.state.number];
+    let nameArr = this.filterArray(name);
+    console.log(">>>check name:", nameArr);
     return (
       <>
         {" "}
         <div className="container">
-          {!this.state.name ? (
+          {nameArr.length === 0 ? (
             <>
               <p
                 style={{

@@ -1,4 +1,5 @@
 .container {
+    $transition-duration: 0.5s;
     .page {
         width: 25px;
         height: 25px;
@@ -13,56 +14,133 @@
         width: 100%;
         height: 100%;
         gap: 30px;
-        margin-top: 20px;
+        margin-top: 40px;
         .item {
             position: relative;
-            border-radius: 15px;
+            border-radius: 5px;
             min-width: 300px;
             max-width: 350px;
-            height: 450px;
-            border: 1px solid gray !important;
+            height: 550px;
             box-shadow: 0px 0px 6px 0px #8080809c;
             text-align: start;
             padding: 5px 5px;
             cursor: pointer;
+            text-align: center;
+            &:hover {
+                animation: changeColor 0.5s ease-in-out forwards;
+                .header {
+                    position: absolute;
+                    width: 100%;
+                    height: 60px;
+                    background: linear-gradient(to bottom, #5e68efc1 22%, #33ccff 91%);
+                    border-radius: 4px 4px 0px 0px !important;
+                    top: 0;
+                    left: 0;
+                    animation: changcolorHeader 0.5s ease-in-out forwards;
+                    p {
+                        color: white;
+                    }
+                }
+            }
+            &:not(:hover) {
+                animation: changeColor1 0.5s ease-in-out forwards;
+                .header {
+                    animation: changcolorHeader1 0.5s ease-in-out forwards;
+                }
+            }
             .tag {
                 position: absolute;
-                left: 8px;
-                bottom: 5px;
+                top: 60px;
+                margin-left: 60px;
                 width: 100%;
                 height: 30px;
                 background-image: url("../../srcimg/Screenshot\ 2024-03-09\ 023449.png");
                 background-size: contain;
                 background-repeat: no-repeat;
+                scale: 0.8;
+            }
+            .header {
+                position: absolute;
+                width: 100%;
+                height: 60px;
+                border-bottom: 0.6px solid rgba(128, 128, 128, 0.429);
+                border-radius: 4px 4px 0px 0px !important;
+                top: 0;
+                left: 0;
+                p {
+                    color: black;
+                    font-size: 20px;
+                    padding-top: 15px;
+                }
             }
             &.active {
-                border: 1px solid #64b5f6 !important;
                 .header {
                     position: absolute;
                     width: 100%;
-                    height: 20px;
-                    background-color: #64b5f6;
-                    border-radius: 14px 14px 0px 0px !important;
+                    height: 60px;
+                    background: linear-gradient(to bottom, #5e68efc1 22%, #33ccff 91%);
+                    border-radius: 4px 4px 0px 0px !important;
                     top: 0;
                     left: 0;
-                    .img {
-                        width: 100px;
-                        height: inherit;
-                        background-image: url("../../srcimg/logo-trang.png");
-                        background-size: contain;
-                        background-repeat: no-repeat;
-                        background-position: center;
-                        margin: 0 auto;
+                    p {
+                        color: white;
                     }
                 }
+            }
+            h4 {
+                margin-top: 90px;
+                border-top: 1px solid rgba(128, 128, 128, 0.415);
+                width: 100%;
+                padding: 0 !important;
+            }
+            h5 {
+                // position: absolute;
+                // top: 0;
             }
             p {
                 color: #525ceb;
             }
             ul {
                 padding-left: 20px;
+                list-style-type: none;
+                border-top: 1px solid rgba(128, 128, 128, 0.53);
+                li {
+                    padding-top: 5px;
+                }
             }
         }
+    }
+}
+@keyframes changeColor {
+    from {
+        transform: translateY(0px);
+    }
+    to {
+        transform: translateY(-18px);
+    }
+}
+@keyframes changeColor1 {
+    from {
+        transform: translateY(-18px);
+    }
+    to {
+        transform: translateY(0px);
+    }
+}
+@keyframes changcolorHeader {
+    from {
+        opacity: 0;
+    }
+    to {
+        opacity: 1;
+    }
+}
+@keyframes changcolorHeader1 {
+    from {
+        opacity: 0;
+    }
+    to {
+        opacity: 1;
     }
 }
 // @media screen and (max-width: 768px) {
@@ -78,7 +156,7 @@
 //         }
 //     }
 // }
-@media screen and (min-width: 350px) and (max-width: 480px) {
+@media screen and (min-width: 370px) and (max-width: 480px) {
     .child {
         display: flex;
         flex-direction: column;
@@ -86,6 +164,7 @@
         justify-content: center;
         flex-wrap: wrap !important;
         height: 100vh;
+        margin-top: 75px !important;
         .item {
             min-width: 350px !important;
         }
@@ -99,6 +178,7 @@
         justify-content: center;
         flex-wrap: wrap !important;
         height: 100vh;
+        margin-top: 70px !important;
         .item {
             min-width: 296px !important;
         }
