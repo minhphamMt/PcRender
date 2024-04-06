@@ -17,16 +17,15 @@ class RouterPc extends Component {
   handleLinkClick = (link) => {
     this.setState({ activeLink: link });
   };
-  // Hàm xử lý khi click vào button dropdown
+
   handleDropdownClick = () => {
     this.setState((prevState) => ({
-      isDropdownOpen: !prevState.isDropdownOpen, // Đảo ngược trạng thái dropdown
+      isDropdownOpen: !prevState.isDropdownOpen,
     }));
   };
 
-  // Hàm xử lý khi click vào dropdown content
   handleDropdownContentClick = (event) => {
-    event.stopPropagation(); // Ngăn chặn sự kiện lan truyền lên button
+    event.stopPropagation();
   };
 
   render() {
@@ -111,18 +110,18 @@ class RouterPc extends Component {
           <div className="dropdown">
             <button
               className="dropdown__button"
-              onClick={this.handleDropdownClick} // Thêm sự kiện onclick cho button dropdown
+              onClick={this.handleDropdownClick}
             >
-              Dropdown
+              Chọn Loại Máy
             </button>
-            {/* Sử dụng trạng thái isDropdownOpen để quyết định liệu dropdown content có hiển thị hay không */}
+
             <div
               className={
                 this.state.isDropdownOpen
                   ? "dropdown__content show"
                   : "dropdown__content"
               }
-              onClick={this.handleDropdownContentClick} // Thêm sự kiện onclick cho dropdown content
+              onClick={this.handleDropdownContentClick}
             >
               <ul className="nav justify-content-center">
                 <li className="nav-item" onClick={this.handleDropdownClick}>

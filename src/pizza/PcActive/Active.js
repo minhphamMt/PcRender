@@ -165,17 +165,10 @@ class Active extends Component {
         {" "}
         <div className="container">
           {nameArr.length === 0 ? (
-            <>
-              <p
-                style={{
-                  fontSize: "30px",
-                  marginTop: "150px",
-                  fontWeight: "700",
-                }}
-              >
-                Chưa có Pc nào hãy Tạo Pc và Thuê nào
-              </p>
-            </>
+            <div className="not-have">
+              <div className="img"></div>
+              <p className="title">Chưa có PC nào hãy Tạo PC và Thuê nào</p>
+            </div>
           ) : (
             <div className="row row-1">
               <>

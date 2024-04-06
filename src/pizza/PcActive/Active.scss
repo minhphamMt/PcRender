@@ -119,6 +119,25 @@
         }
     }
 }
+.not-have {
+    margin-top: 130px;
+    .img {
+        width: 200px;
+        height: 200px;
+        background-image: url("../srcimg/oops2.jpg");
+        background-size: contain;
+        background-repeat: no-repeat;
+        background-position: center;
+        margin: 0 auto;
+        scale: 1.8;
+    }
+    .title {
+        text-transform: capitalize;
+        margin-top: 50px;
+        font-size: 30px;
+        font-weight: 700;
+    }
+}
 @media screen and (min-width: 980px) and (max-width: 1200px) {
     .row-1 {
         display: flex;

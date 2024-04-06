@@ -46,7 +46,7 @@ class Header extends Component {
   // Hàm chuyển đổi số thành chuỗi rút gọn
   shortenNumber = (num) => {
     const hauto = ["", "k", "m", "b", "t"];
-    const tiensau = Math.floor(("" + num).length / 3.5);
+    const tiensau = Math.floor(("" + num).length / 3.2);
     let rutgon = parseFloat(
       (tiensau !== 0 ? num / Math.pow(1000, tiensau) : num).toPrecision(2)
     );

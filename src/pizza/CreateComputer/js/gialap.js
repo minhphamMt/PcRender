@@ -23,6 +23,49 @@ class GiaLap extends Component {
       this.props.handleActivePa(message, arrcoppy);
     }
   };
+  // test = () => {
+  //   let price = 3500;
+  //   let money = [];
+  //   let arr = [
+  //     {
+  //       name: "minh",
+  //       age: "20",
+  //       info: { email: "minh@gmail.com", number: "15" },
+  //     },
+  //     {
+  //       name: "Hoa",
+  //       age: "25",
+  //       info: { email: "hoa@example.com", number: "20" },
+  //     },
+  //     {
+  //       name: "Nam",
+  //       age: "30",
+  //       info: { email: "nam@example.com", number: "25" },
+  //     },
+  //     {
+  //       name: "An",
+  //       age: "22",
+  //       info: { email: "an@example.com", number: "18" },
+  //     },
+  //     {
+  //       name: "Linh",
+  //       age: "28",
+  //       info: { email: "linh@example.com", number: "23" },
+  //     },
+  //   ];
+  //   /////cau 2
+  //   for (let i = 0; i < arr.length; i++) {
+  //     money[i] = (arr[i].info["number"] * price) / 30;
+  //     console.log(">>>Check money:", money[i]);
+  //   }
+  //   let max = money[0];
+  //   for (let i = 0; i < money.length; i++) {
+  //     if (money[i] > max) {
+  //       max = money[i];
+  //     }
+  //   }
+  //   console.log(">>>Check max:", max);
+  // };
   render() {
     return (
       <>
