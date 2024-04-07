@@ -26,32 +26,11 @@
             padding: 5px 5px;
             cursor: pointer;
             text-align: center;
-            &:hover {
-                animation: changeColor 0.5s ease-in-out forwards;
-                .header {
-                    position: absolute;
-                    width: 100%;
-                    height: 60px;
-                    background: linear-gradient(to bottom, #5e68efc1 22%, #33ccff 91%);
-                    border-radius: 4px 4px 0px 0px !important;
-                    top: 0;
-                    left: 0;
-                    animation: changcolorHeader 0.5s ease-in-out forwards;
-                    p {
-                        color: white;
-                    }
-                }
-            }
-            &:not(:hover) {
-                animation: changeColor1 0.5s ease-in-out forwards;
-                .header {
-                    animation: changcolorHeader1 0.5s ease-in-out forwards;
-                }
-            }
+
             .tag {
                 position: absolute;
                 top: 60px;
-                margin-left: 60px;
+                margin-left: 22%;
                 width: 100%;
                 height: 30px;
                 background-image: url("../../srcimg/Screenshot\ 2024-03-09\ 023449.png");
@@ -143,20 +122,33 @@
         opacity: 1;
     }
 }
-// @media screen and (max-width: 768px) {
-//     .child {
-//         display: flex;
-//         flex-direction: column;
-//         align-items: center;
-//         justify-content: center;
-//         flex-wrap: wrap !important;
-//         height: 100vh;
-//         .item {
-//             max-width: 355px !important;
-//         }
-//     }
-// }
-@media screen and (min-width: 370px) and (max-width: 480px) {
+@media screen and (min-width: 1200px) {
+    .item {
+        &:hover {
+            animation: changeColor 0.5s ease-in-out forwards;
+            .header {
+                position: absolute;
+                width: 100%;
+                height: 60px;
+                background: linear-gradient(to bottom, #5e68efc1 22%, #33ccff 91%);
+                border-radius: 4px 4px 0px 0px !important;
+                top: 0;
+                left: 0;
+                animation: changcolorHeader 0.5s ease-in-out forwards;
+                p {
+                    color: white !important;
+                }
+            }
+        }
+        &:not(:hover) {
+            animation: changeColor1 0.5s ease-in-out forwards;
+            .header {
+                animation: changcolorHeader1 0.5s ease-in-out forwards;
+            }
+        }
+    }
+}
+@media screen and (min-width: 370px) and (max-width: 500px) {
     .child {
         display: flex;
         flex-direction: column;
@@ -170,6 +162,7 @@
         }
     }
 }
+
 @media screen and (max-width: 365px) {
     .child {
         display: flex;
@@ -184,6 +177,7 @@
         }
     }
 }
+
 @media screen and (min-width: 767px) and (max-width: 1300px) {
     .child {
         display: flex;
@@ -193,8 +187,8 @@
         height: 100vh;
     }
     .item {
-        flex: 0 0 calc(50% - 20px); /* flex-basis: 50% - 20px */
-        margin: 10px; /* Đảm bảo margin giữa các phần tử */
-        max-width: 300px !important; /* Đảm bảo rằng các phần tử không vượt quá 300px */
+        flex: 0 0 calc(50% - 20px);
+        margin: 10px;
+        max-width: 300px !important;
     }
 }
