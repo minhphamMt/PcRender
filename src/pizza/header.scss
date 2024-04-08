@@ -63,6 +63,7 @@
             }
             .coin-item {
                 position: absolute;
+                display: none;
                 right: 180px;
                 top: 15px;
                 width: 20px;
@@ -166,7 +167,7 @@
         }
     }
 }
-@media screen and (min-width: 1120px) and (max-width: 1300px) {
+@media screen and (min-width: 1200px) and (max-width: 1400px) {
     .left-content {
         .logo {
             scale: 2.6 !important;
@@ -188,9 +189,12 @@
         .nav {
             gap: 10px !important;
         }
+        .bell {
+            right: -20px;
+        }
     }
 }
-@media screen and (min-width: 501px) and (max-width: 1118px) {
+@media screen and (min-width: 501px) and (max-width: 1200px) {
     .left-content {
         .logo {
             position: absolute;
@@ -207,7 +211,7 @@
     }
 }
 
-@media screen and (max-width: 1119px) {
+@media screen and (max-width: 1200px) {
     .header {
         .left-content {
             .logo {

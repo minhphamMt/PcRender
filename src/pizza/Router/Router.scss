@@ -45,6 +45,7 @@
             position: relative;
             display: inline-block;
             z-index: 20 !important;
+
             ul {
                 display: none;
                 .nav-item {
@@ -80,6 +81,8 @@
                 font-weight: bold;
                 inset: 0;
                 box-shadow: #3c68bf 0px 7px 0px 0px;
+                text-transform: uppercase;
+                letter-spacing: 1px;
                 &:active {
                     transform: translateY(7px);
                     box-shadow: none;

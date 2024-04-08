@@ -1,5 +1,6 @@
 .container {
     $transition-duration: 0.5s;
+
     .page {
         width: 25px;
         height: 25px;
@@ -22,7 +23,6 @@
             max-width: 350px;
             height: 550px;
             box-shadow: 0px 0px 6px 0px #8080809c;
-            text-align: start;
             padding: 5px 5px;
             cursor: pointer;
             text-align: center;
